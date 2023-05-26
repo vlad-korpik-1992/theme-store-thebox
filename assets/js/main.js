@@ -41,6 +41,13 @@ $(document).ready(function() {
 		if(windowWidth < 767)$(".hero__box").removeClass("hero__box--scroll");
     	else $(".hero__box").addClass("hero__box--scroll");
 	});
+	/* Edit breadcrumbs link*/
+	$("a[href*='category/blog']")
+	.each(function()
+	{ 
+	   this.href = this.href.replace(/category/, 
+		  "");
+	});
 	$('.about__btn__link').on('click', function (e) {
         e.preventDefault();
         $('.about__inner__hidden').addClass('about__inner__show');
