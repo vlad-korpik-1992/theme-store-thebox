@@ -108,7 +108,7 @@
                 </a>
             </div>
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="<?php echo get_page_link(27)?>">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/stocks.png" alt="">
                     <p>Акции</p>
                 </a>
