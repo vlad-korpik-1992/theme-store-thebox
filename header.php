@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="<?php bloginfo('template_url'); ?>/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico">
     <title><?php wp_title("", true); ?></title>
 </head>
 
@@ -112,7 +114,7 @@
                 </a>
             </div>
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="<?php echo get_page_link(12)?>">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/payment.png" alt="">
                     <p>Доставка и оплата</p>
                 </a>

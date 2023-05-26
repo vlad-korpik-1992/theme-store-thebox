@@ -38,7 +38,7 @@
                 <a href="tel:+375295611010" class="footer__link"><p>+375 29 561 10 10</p></a>
             </div>
             <div class="footer__box__items">
-                <a class="footer__page" href="#">Политика конфиденциальности</a>
+                <a class="footer__page" href="<?php echo get_page_link(8)?>">Политика конфиденциальности</a>
                 <a class="footer__page" href="#">Правила оплаты карточкой</a>
                 <img class="footer__pay" src="<?php bloginfo('template_url'); ?>/assets/img/footer_pay_01.png" alt="">
                 <img class="footer__pay" src="<?php bloginfo('template_url'); ?>/assets/img/footer_pay_02.png" alt="">
