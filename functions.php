@@ -138,7 +138,7 @@ add_action( 'widgets_init', 'thebox_widgets_init' );
  * Enqueue scripts and styles.
  */
 
-add_action( 'wp_enqueue_scripts', 'vibemebel_scripts' );
+add_action( 'wp_enqueue_scripts', 'thebox_scripts' );
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 

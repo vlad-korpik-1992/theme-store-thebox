@@ -675,22 +675,20 @@ section{
     flex-direction: row;
     gap: 5px;
 }
-.breadcrumbs__items__link{
+.breadcrumbs__list__link{
     font-size: 13px;
     line-height: 21px;
     color: #000000;
     padding-right: 5px;
 }
-.breadcrumbs__items__link--active{
+.breadcrumbs__page{
     color: #97979E;
     padding-right: 0;
 }
-.breadcrumbs__items__link--active::before{
-    content: "/";
+.breadcrumbs__page::before{
     padding-right: 5px;
 }
-.breadcrumbs__items__link:nth-child(2n)::before {
-    content: "/";
+.breadcrumbs__list__link:nth-child(2n)::before {
     padding-right: 5px;
 }
 .products__items{
