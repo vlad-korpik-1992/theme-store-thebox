@@ -15,7 +15,7 @@
                 <p>с 11:00 до 23:00</p>
                 <h6>Время работы доставки:</h6>
                 <p>с 11:00 до 23:00</p>
-                <a href="mailto:" class="footer__link">
+                <a href="mailto:oookubis@gmail.com" class="footer__link">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/email.png" alt="">
                     <p>oookubis@gmail.com</p>
                 </a>
@@ -24,12 +24,12 @@
                 <h6>Соцсети</h6>
                 <div class="footer__soc">
                     <div class="footer__soc__items">
-                        <a href="#">
+                        <a href="https://vk.com/thebox99" target="_blank">
                             <img src="<?php bloginfo('template_url'); ?>/assets/img/footer_vk.png" alt="">
                         </a>
                     </div>
                     <div class="footer__soc__items">
-                        <a href="#">
+                        <a href="https://www.instagram.com/thebox.99/" target="_blank">
                             <img src="<?php bloginfo('template_url'); ?>/assets/img/footer_insta.png" alt="">
                         </a>
                     </div>
