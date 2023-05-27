@@ -7,54 +7,31 @@
  * @package TheBox
  */
 
-get_header();
-?>
+get_header(); ?>
 
-	<main id="primary" class="site-main">
-
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'thebox' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'thebox' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'thebox' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$thebox_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'thebox' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$thebox_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
-<?php
-get_footer();
+	<section class="category category--border">
+        <div class="wrapper">
+            <div class="category__head category__head--nocategories">
+                <div class="category__head__items category__head__items--column">
+                    <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs('/'); ?>
+                    <h1>Страница не найдена</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="single">
+        <div class="wrapper">
+            <div class="single__box">
+                <article class="policy__box article">
+                    <h2>404</h2>
+					<p>Упс... Данная ошибка означает, что вы пытаетесь перейти по адресу, которого не существует.</p>
+					<p>Страница по этому адресу недоступна.</p>
+					<a class="card__box__btn__add error-404--btn" href="<?php echo site_url(); ?>">Вернуться домой</a>
+                </article>
+            </div>
+        </div>
+    </section>
+	<section class="map">
+        <img src="<?php bloginfo('template_url'); ?>/assets/img/map.jpg" alt="" style="width: 100%;">
+    </section>
+<?php get_footer();?>
