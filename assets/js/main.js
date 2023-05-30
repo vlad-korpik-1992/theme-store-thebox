@@ -54,6 +54,79 @@ $(document).ready(function() {
 		$('.about__inner__show').removeClass('about__inner__hidden');
 		$('.about__btn').remove();
 	});
+	/* Фильтр по категориям */
+	$('.btnPizza').on('click', function (e) {
+        e.preventDefault();
+		let filter = $(this).parent();
+		$.ajax({
+			url: '/wp-admin/admin-ajax.php',
+			data: filter.serialize(),
+			type:"POST",
+            action: 'myfilter',
+			beforeSend:function(xhr){
+                $(".products__box").empty();
+			},
+			success:function(data){
+                if(Boolean(data)){
+                    $('.response').html(data); 
+                }
+				else{
+                    data = '<article class="policy__box article response__box"><h2>Товар данной категории не добавлен</h2></article>';
+                    $('.response').html(data);
+                }
+			}
+		});
+		return false;
+	});
+	/* scrollto */
+
+	$('.category__head__list__link--sushi').click(function scroll(e) {
+		e.preventDefault();
+		let href = $(this).attr('href');
+		let windowWidth = $(window).width();
+		if(windowWidth < 767){
+			$('html, body').animate({
+				scrollTop: $(href).offset().top - 300	
+			}, {
+				duration: 370,
+				easing: "linear"
+			});
+			return false;
+		}
+		$(window).resize(function(){
+			let windowWidth = $(window).width();
+			if(windowWidth < 767){
+				$('html, body').animate({
+					scrollTop: $(href).offset().top - 300	
+				}, {
+					duration: 370,
+					easing: "linear"
+				});
+				return false;
+			}
+		});
+		if(windowWidth > 768){
+			$('html, body').animate({
+				scrollTop: $(href).offset().top - 200	
+			}, {
+				duration: 370,
+				easing: "linear"
+			});
+			return false;
+		}
+		$(window).resize(function(){
+			let windowWidth = $(window).width();
+			if(windowWidth > 768){
+				$('html, body').animate({
+					scrollTop: $(href).offset().top - 200	
+				}, {
+					duration: 370,
+					easing: "linear"
+				});
+				return false;
+			}
+		});
+	});
 	/* Tabs */
 	$('.card__supplements__link').click(function (e) {
         e.preventDefault();

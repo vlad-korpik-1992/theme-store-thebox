@@ -16,14 +16,16 @@
                 <div class="hero__box__items">
                     <?php
                         foreach ($categories as $category):
-                            $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true ); 
-                            $image = wp_get_attachment_url( $thumbnail_id );?>
-                            <a class="hero__box__link" href="/product-category/<?echo $category->slug;?>">
-                                <div class="hero__box__inner" style="background-image: url(<? echo $image; ?>)">
-                                    <div class="hero__box__title"><? echo $category->cat_name; ?></div>
-                                </div>
-                            </a>
+                            if( $category->slug == 'pizza' || $category->slug == 'snacks' || $category->slug == 'sushi' || $category->slug == 'drinks'):
+                                $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true ); 
+                                $image = wp_get_attachment_url( $thumbnail_id );?>
+                                <a class="hero__box__link" href="/product-category/<?echo $category->slug;?>">
+                                    <div class="hero__box__inner" style="background-image: url(<? echo $image; ?>)">
+                                        <div class="hero__box__title"><? echo $category->cat_name; ?></div>
+                                    </div>
+                                </a>                           
                     <?php
+                            endif;
                         endforeach;
                     ?>
                     

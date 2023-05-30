@@ -199,6 +199,44 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+/* Фильтр по товару */
+add_action('wp_ajax_myfilter', 'filter_function');
+add_action('wp_ajax_nopriv_myfilter', 'filter_function');
+
+function filter_function(){
+	$slug = $_POST['productCat'];
+	$response = '';
+	$args = array(
+        'post_type' => 'product',
+        'post_status'   => 'publish',
+        'tax_query' => array(
+    		array(
+        			'taxonomy' => 'product_cat',
+         			'field' => 'slug',
+        			'terms' => $slug, 
+    		)
+		),
+    ); 
+	$query = new WP_Query( $args );
+	if ( $query->have_posts()) :
+		$item = 1;
+		while ( $query->have_posts() ) : $query->the_post();
+			set_query_var( 'item', $item );
+			$response .= get_template_part('./template-parts/filter');
+			$item++ ;
+		endwhile; wp_reset_postdata();
+		if($item % 2 == 0 || $item == 1):
+			$response .= '<div class="products__box__half products__box__half--borderrnone products__box__half--empty"><div class="products__box__half__inner"></div></div>';
+		?>
+			
+	<?php
+		endif;
+	endif;
+	echo $response;
+	exit;
+}
+/* Фильтр по товару */
+
 /* Breadcrumbs */
 
 function kama_breadcrumbs( $sep = ' » ', $l10n = array(), $args = array() ){

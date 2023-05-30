@@ -84,25 +84,25 @@
     <div class="header__left">
         <div class="header__left__box">
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="/product-category/pizza">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/pizza.png" alt="">
                     <p>Пицца</p>
                 </a>
             </div>
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="/product-category/sushi">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/sushi.png" alt="">
                     <p>Суши</p>
                 </a>
             </div>
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="/product-category/snacks">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/snacks.png" alt="">
                     <p>Закуски и салаты</p>
                 </a>
             </div>
             <div class="header__left__box__items">
-                <a class="header__left__link" href="#">
+                <a class="header__left__link" href="/product-category/drinks">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/drinks.png" alt="">
                     <p>Напитки</p>
                 </a>

@@ -651,6 +651,9 @@ section{
 .category__head__list__items{
     display: flex;
 }
+.category__head__list--sushi .category__head__list__items{
+    flex: 1;
+}
 .category__head__list__items--flex{
     flex: 1;
 }
@@ -664,6 +667,9 @@ section{
     line-height: 21px;
     color: #85858C;
     border-left: 1px solid #D6D6D6;
+    background: transparent;
+    min-height: 90px;
+    cursor: pointer;
 }
 .category__head__list__link p{
     white-space: nowrap;
@@ -1631,6 +1637,9 @@ a.error-404--btn{
     color: #171717;
     text-decoration: none;
 }
+.response__box{
+    padding: 30px 0 0 0;
+}
 @media (max-width: 1280px){
     .insta__box__items--row img:last-child{
         display: none;
@@ -1903,6 +1912,9 @@ a.error-404--btn{
         overflow-x: scroll;
         align-items: stretch;
     }
+    .category__head__list--sushi{
+        gap: 20px;
+    }
     .category__head__list::-webkit-scrollbar{
         height: 3px;
         width: 3px;
@@ -1916,6 +1928,9 @@ a.error-404--btn{
         flex: 1;
         justify-content: center;
         border-left: 1px solid #D6D6D6;
+    }
+    .category__head__list--sushi .category__head__list__items{
+        padding-left: 15px;
     }
     .category__head__list__link--sushi p {
         white-space: nowrap;
@@ -2146,6 +2161,9 @@ a.error-404--btn{
     .products__box{
         grid-template-columns: repeat(1, 1fr);
         gap: 0 20px;
+    }
+    .products__box__half--empty{
+        display: none;
     }
     .products__box__half{
         border-right: none;
