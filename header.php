@@ -70,10 +70,11 @@
                         </div>
                     </a>
                     <div class="header__social__box__items">
-                        <a class="header__social__box__link" href="#">
+                        <a class="header__social__box__link" href="<?php echo get_page_link(69)?>">
                             <img src="<?php bloginfo('template_url'); ?>/assets/img/bascket.png" alt="Корзина">
                             <div class="bascket">
-                                <div class="bascket__num">1</div>
+                                <?$items_count = WC()->cart->get_cart_contents_count();?>
+                                <div id="mini-cart-count" class="bascket__num"><?php echo $items_count ? $items_count : '0'; ?></div>
                             </div>
                         </a>
                     </div>

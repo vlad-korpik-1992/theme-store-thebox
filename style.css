@@ -1198,6 +1198,9 @@ p.about__inner__show:last-child{
     transition: 0.5s all;
     width: 50%;
 }
+.card__picture--product{
+    width: 100%;
+}
 .card__picture--pizza{
     transform: scale(0.9);
 }
@@ -1233,7 +1236,7 @@ p.about__inner__show:last-child{
     max-width: fit-content;
     font-weight: 700;
     font-size: 30px;
-    line-height: 21px;
+    line-height: 120%;
     color: #000000;
     padding-bottom: 16px;
 }
@@ -1331,6 +1334,9 @@ p.about__inner__show:last-child{
     color: #fff;
     background-color: #F44336;
     border-radius: 100px;
+}
+.card__price--nonvariable{
+    display: none;
 }
 .card__box__btn{
     display: flex;
@@ -2003,6 +2009,9 @@ a.error-404--btn{
     .modal__body{
         padding: 30px;
     }
+    .modal__body .nutrition__box{
+        right: -10px;
+    }
     .card__box__items{
         flex: 0 0 100%;
         max-width: 100%;
@@ -2015,6 +2024,9 @@ a.error-404--btn{
     }
     .card__picture{
         width: 50%;
+    }
+    .card__picture--product{
+        width: 85%;
     }
     .card__box__btn{
         padding-top: 10px;

@@ -71,7 +71,10 @@
                     'post_type' => 'product',
                     'product_cat' => $term->slug,
                     'paged'             => $paged,
-                    'posts_per_page'    => 1000
+                    'posts_per_page'    => 1000,
+                    'orderby' => array(
+                        'price' => 'DESC'
+                    )
                 );
                 $temp = $wp_query;
                 $wp_query= null;
@@ -112,9 +115,13 @@
                                                 </div>
                                                 <div class="products__box__half__price">
                                                     <span><?php echo $product_data->get_price(); ?> BYN</span>
-                                                    <button class="put_in_cart">
-                                                        <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="Basket">
-                                                    </button>
+                                                    <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php">
+                                                        <input type="hidden" name="action" value="modalOpen">
+                                                        <input type="hidden" name="productId" value="<?php echo get_the_ID();?>">
+                                                        <button class="put_in_cart" type="submit">
+                                                            <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="">
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +165,10 @@
                             'post_type' => 'product',
                             'product_cat' => get_queried_object()->slug,
                             'paged'             => $paged,
-                            'posts_per_page'    => 1000
+                            'posts_per_page'    => 1000,
+                            'orderby' => array(
+                                'price' => 'ASC'
+                            )
                         );
                         $temp = $wp_query;
                         $wp_query= null;
@@ -182,9 +192,13 @@
                                                     </div>
                                                     <div class="products__box__half__price">
                                                         <span><?php echo $product_data->get_price(); ?> BYN</span>
-                                                        <button class="put_in_cart">
-                                                            <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="">
-                                                        </button>
+                                                        <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php">
+                                                            <input type="hidden" name="action" value="modalOpen">
+                                                            <input type="hidden" name="productId" value="<?php echo get_the_ID();?>">
+                                                            <button class="put_in_cart" type="submit">
+                                                                <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="">
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -262,186 +276,7 @@
                 <a class="modal__close" href="#">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/modal_close.png" alt="">
                 </a>
-                <div class="card__box">
-                    <div class="card__box__items">
-                        <img class="card__picture card__picture--pizza" src="img/card_pizza.png" alt="">
-                        <div class="card__box__btn">
-                            <div class="card__box__btn__amount">
-                                <a class="amount__minus" href="#">-</a>
-                                <span class="amount">1</span>
-                                <a class="amount__plus" href="#">+</a>
-                            </div>
-                            <a class="card__box__btn__add" href="domen.by?add_to_cart=1235:1">
-                                <span>Добавить</span>
-                                <span class="add__price">30.00</span>
-                                <span>BYN</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card__box__items">
-                        <div class="card__box__items__inner card__box__items__inner--modal">
-                            <div class="card__box__items__inner__row">
-                                <h1>Итальянская</h1>
-                                <a class="card__box__nutrition" href="#">
-                                    <img src="img/nutrition__info.png" alt="">
-                                </a>
-                                <div class="nutrition__box">
-                                    <div class="nutrition__box__title">Пищевая ценность</div>
-                                    <p>Калории<span>218.61 ккал.</span></p>
-                                    <p>Углеводы<span>22,12 г.</span></p>
-                                    <p>Белки<span>11,50 г.</span></p>
-                                    <p>Жиры<span>10,20 г.</span></p>
-                                    <div class="nutrition__box__footer">В 100 г. готового продукта</div>
-                                </div>
-                            </div>
-                            <p><span class="card__gramme">320 г.</span> Соус томатный, моцарелла, итальянская пепперони, шампиньоны, маслины, итальянские травы</p>
-                            <div class="card__sizes">
-                                <a class="card__sizes__link small card__sizes__link--active" href="#" data-cart="1235" data-price="30.00" data-gramme="320 г.">25 см</a>
-                                <a class="card__sizes__link normal" href="#" data-cart="78952" data-price="40.00" data-gramme="450 г.">33 см</a>
-                                <a class="card__sizes__link big" href="#" data-cart="0321" data-price="50.00" data-gramme="500 г.">40 см</a>
-                            </div>
-                            <h2>Добавить по вкусу</h2>
-                            <div class="card__supplements">
-                                <div class="card__supplements__items">
-                                    <a class="card__supplements__link" href="#" id="sauces-modal">
-                                        <span class="card__supplements__link__title card__supplements__link__title--click" id="sauces-modal">Соусы</span>
-                                        <svg class="card__svg" id="2sauces-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6">
-                                            <path d="M0.197889 1.18894L4.63061 5.84792C4.68338 5.90322 4.74055 5.94248 4.80211 5.96571C4.86368 5.98893 4.92964 6.00036 5 5.99999C5.07036 5.99999 5.13632 5.98856 5.19789 5.96571C5.25945 5.94285 5.31662 5.90359 5.36939 5.84792L9.8153 1.18894C9.93843 1.05991 10 0.898616 10 0.705068C10 0.51152 9.93404 0.345622 9.80211 0.207373C9.67018 0.0691247 9.51627 4.97982e-07 9.34037 5.05671e-07C9.16447 5.13359e-07 9.01055 0.0691247 8.87863 0.207373L5 4.27188L1.12137 0.207374C0.99824 0.0783419 0.846438 0.0138253 0.665963 0.0138253C0.485489 0.0138254 0.329463 0.0829496 0.197889 0.221199C0.0659625 0.359447 -2.39506e-07 0.520737 -2.31449e-07 0.705069C-2.23391e-07 0.8894 0.0659626 1.05069 0.197889 1.18894Z" fill="#85858C"></path>
-                                        </svg>
-                                    </a>
-                                    <div class="card__supplements__box" id="1sauces-modal">
-                                        <div class="card__supplements__box__items" data-cart="5300">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Грибной</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__col">
-                                                    <div class="supplements__price__col__minus">-</div>
-                                                    <div class="supplements__price__col__value">1</div>
-                                                    <div class="supplements__price__col__plus">+</div>
-                                                </div>
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">1.20</span>
-                                                    <span>BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="8888">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Барбекю</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__col">
-                                                    <div class="supplements__price__col__minus">-</div>
-                                                    <div class="supplements__price__col__value">1</div>
-                                                    <div class="supplements__price__col__plus">+</div>
-                                                </div>
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">1.20</span>
-                                                    <span> BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="9876">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Терияки</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__col">
-                                                    <div class="supplements__price__col__minus">-</div>
-                                                    <div class="supplements__price__col__value">1</div>
-                                                    <div class="supplements__price__col__plus">+</div>
-                                                </div>
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">1.20</span>
-                                                    <span>BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="6030">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Чесночный</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__col">
-                                                    <div class="supplements__price__col__minus">-</div>
-                                                    <div class="supplements__price__col__value">1</div>
-                                                    <div class="supplements__price__col__plus">+</div>
-                                                </div>
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">1.20</span>
-                                                    <span> BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card__supplements__items">
-                                    <a class="card__supplements__link" href="#" id="extras-modal">
-                                        <span class="card__supplements__link__title card__supplements__link__title--click" id="extras-modal">Дополнительные начинки</span>
-                                        <svg class="card__svg" id="2extras-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6">
-                                            <path d="M0.197889 1.18894L4.63061 5.84792C4.68338 5.90322 4.74055 5.94248 4.80211 5.96571C4.86368 5.98893 4.92964 6.00036 5 5.99999C5.07036 5.99999 5.13632 5.98856 5.19789 5.96571C5.25945 5.94285 5.31662 5.90359 5.36939 5.84792L9.8153 1.18894C9.93843 1.05991 10 0.898616 10 0.705068C10 0.51152 9.93404 0.345622 9.80211 0.207373C9.67018 0.0691247 9.51627 4.97982e-07 9.34037 5.05671e-07C9.16447 5.13359e-07 9.01055 0.0691247 8.87863 0.207373L5 4.27188L1.12137 0.207374C0.99824 0.0783419 0.846438 0.0138253 0.665963 0.0138253C0.485489 0.0138254 0.329463 0.0829496 0.197889 0.221199C0.0659625 0.359447 -2.39506e-07 0.520737 -2.31449e-07 0.705069C-2.23391e-07 0.8894 0.0659626 1.05069 0.197889 1.18894Z" fill="#85858C"></path>
-                                        </svg>
-                                    </a>
-                                    <div class="card__supplements__box" id="1extras-modal">
-                                        <div class="card__supplements__box__items" data-cart="1111">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Соус Бешамель</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">1.00</span>
-                                                    <span>BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="2222">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Шампиньоны</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">3.20</span>
-                                                    <span> BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="3333">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Халапеньо</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">2.50</span>
-                                                    <span>BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__supplements__box__items" data-cart="4444">
-                                            <div class="supplements__checked">
-                                                <div class="supplements__checked__circle"></div>
-                                                <div class="supplements__checked__title">Ветчина</div>
-                                            </div>
-                                            <div class="supplements__price">
-                                                <div class="supplements__price__value">
-                                                    <span class="supplements__price__span">4.00</span>
-                                                    <span> BYN</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="card__box card__box--response"></div>
             </div>
         </div>
     </section>

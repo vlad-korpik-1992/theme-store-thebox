@@ -14,9 +14,13 @@
             </div>
             <div class="products__box__half__price">
                 <span><?php echo $product_data->get_price(); ?> BYN</span>
-                <button class="put_in_cart">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="">
-                </button>
+                <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php">
+                    <input type="hidden" name="action" value="modalOpen">
+                    <input type="hidden" name="productId" value="<?php echo get_the_ID();?>">
+                    <button class="put_in_cart" type="submit">
+                        <img src="<?php bloginfo('template_url'); ?>/assets/img/btn_backet.png" alt="">
+                    </button>
+                </form>
             </div>
         </div>
     </div>
