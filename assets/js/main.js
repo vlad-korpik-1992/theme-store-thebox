@@ -134,6 +134,24 @@ $(document).ready(function() {
 	});
 })
 $(function() {
+	$("span[itemprop='name']").each(function(){ 
+		let innerHtml = this.innerHTML;
+		if(innerHtml == 'Товары'){
+			let blockParentBreadcrumbs = $(this).parent().parent();
+			blockParentBreadcrumbs.next('.kb_sep').remove();
+			blockParentBreadcrumbs.remove();
+		}
+   	});
+	$("a[href*='pizza/']").each(function(){ 
+			let block = $(this).parent().next();
+			block.next('.breadcrumbs__list__items').next().remove();
+			block.next('.breadcrumbs__list__items').remove();
+	});
+	$("a[href*='sushi/']").each(function(){ 
+		let block = $(this).parent().next();
+		block.next('.breadcrumbs__list__items').next().remove();
+		block.next('.breadcrumbs__list__items').remove();
+	});
 	/* Tabs */
 	$(document).on('click', '.card__supplements__link', function(e) { 
 		e.preventDefault();
@@ -201,7 +219,8 @@ $(function() {
 			newStirngHref = newStirngHref + dataCart + ','; 
 			i++;
 		}
-		let newHref = `${ window.location.href }?add-to-cart=${ newStirngHref }`;
+		let url_array = window.location.href.split("?");
+		let newHref = `${ url_array[0] }?add-to-cart=${ newStirngHref }`;
 		if(blockParent.hasClass('card__box__btn--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 		}
@@ -237,7 +256,8 @@ $(function() {
 				newStirngHref = newStirngHref + dataCart + ','; 
 				i++;
 			}
-			let newHref = `${ window.location.href }?add-to-cart=${ newStirngHref }`;
+			let url_array = window.location.href.split("?");
+			let newHref = `${ url_array[0] }?add-to-cart=${ newStirngHref }`;
 			if(blockParent.hasClass('card__box__btn--modal')){
 				$("a.card__box__btn__add--modal").attr("href", newHref);
 			}
@@ -270,7 +290,8 @@ $(function() {
 		let blockGramme = $(this).parent().parent();
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
-		let newHref = `${ window.location.href }?add-to-cart=${ dataCart }`;
+		let url_array = window.location.href.split("?");
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
 		if($(this).hasClass('normal--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);
@@ -309,7 +330,8 @@ $(function() {
 		let blockGramme = $(this).parent().parent();
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
-		let newHref = `${ window.location.href }?add-to-cart=${ dataCart }`;
+		let url_array = window.location.href.split("?");
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
 		if($(this).hasClass('small--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);
@@ -348,7 +370,8 @@ $(function() {
 		let blockGramme = $(this).parent().parent();
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
-		let newHref = `${ window.location.href }?add-to-cart=${ dataCart }`;
+		let url_array = window.location.href.split("?");
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
 		if($(this).hasClass('big--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);
