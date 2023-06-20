@@ -291,7 +291,7 @@ $(function() {
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
 		let url_array = window.location.href.split("?");
-		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart },`;
 		if($(this).hasClass('normal--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);
@@ -331,7 +331,7 @@ $(function() {
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
 		let url_array = window.location.href.split("?");
-		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart },`;
 		if($(this).hasClass('small--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);
@@ -371,7 +371,7 @@ $(function() {
 		let grammeContent = blockGramme.find('.card__gramme');
 		grammeContent.text(dataGramme);
 		let url_array = window.location.href.split("?");
-		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart }`;
+		let newHref = `${ url_array[0] }?add-to-cart=${ dataCart },`;
 		if($(this).hasClass('big--modal')){
 			$("a.card__box__btn__add--modal").attr("href", newHref);
 			$('.add__price__modal').text(dataPrice);

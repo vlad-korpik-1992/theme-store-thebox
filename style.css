@@ -1646,6 +1646,131 @@ a.error-404--btn{
 .response__box{
     padding: 30px 0 0 0;
 }
+/* Cart */
+.woocommerce-order{
+    font-size: 16px;
+    line-height: 160%;
+    padding-bottom: 5px;
+}
+.woocommerce .cart-collaterals .cart_totals h2{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #171717;
+    padding-bottom: 16px;
+}
+.cart_totals > table > tbody > tr.cart-subtotal {
+    display: none;
+}
+.woocommerce table.shop_table tbody th, .woocommerce table.shop_table tfoot td, .woocommerce table.shop_table tfoot th{
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+.woocommerce table.shop_table td{
+    border: none;
+}
+.woocommerce table.shop_table th{
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+.woocommerce table.shop_table td{
+    padding: 0;
+}
+.woocommerce table.shop_table td a{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #171717;
+}
+.woocommerce table.shop_table td.product-remove a{
+    color: #F44336;
+}
+.woocommerce-Price-amount{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #171717;
+}
+.cart_totals > table > tbody > tr.order-total{
+    font-size: 18px;
+}
+.woocommerce table.shop_table{
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+.woocommerce a.button.alt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    background-color: #FFEC00;
+    border-radius: 100px;
+    padding: 20px 72px !important;
+    margin-top: 32px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s all;
+}
+.woocommerce a.button.alt:hover{
+    background-color: #000;
+    color: #fff;
+}
+.quantity > input[type="number"] {
+    font-size: 16px;
+    line-height: 150%;
+    border: 1px solid #000000;
+    border-radius: 100px;
+    width: 60% !important;
+    text-align: center !important;
+    padding: 5px;
+}
+.woocommerce button.button{
+    float: right !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1 !important;
+    background-color: transparent;
+    border-radius: 100px;
+    color: #171717 !important;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 15px 30px !important;
+    border: 1px solid #85858C;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.woocommerce button.button:hover{
+    background-color: #FFEC00;
+    border: 1px solid #FFEC00;
+}
+.size-woocommerce_thumbnail{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+tr.order-total th{
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 21px !important;
+    width: 241px;
+}
+tr.order-total span.woocommerce-Price-amount{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 21px;
+}
+/* Cart */
 @media (max-width: 1280px){
     .insta__box__items--row img:last-child{
         display: none;
@@ -1702,6 +1827,11 @@ a.error-404--btn{
     }
     .blog__items__link-img img{
         max-height: 178px;
+    }
+    .woocommerce table.shop_table_responsive tr td::before, .woocommerce-page table.shop_table_responsive tr td::before {
+        content: attr(data-title) ": ";
+        font-weight: 700;
+        float: left;
     }
 }
 @media (max-width: 991px){
@@ -2100,6 +2230,43 @@ a.error-404--btn{
         max-height: 167px;
         object-fit: cover;
     }
+    /* Cart */
+    .woocommerce table.shop_table_responsive tr, .woocommerce-page table.shop_table_responsive tr{
+        display: block;
+    }
+    .woocommerce table.shop_table thead{
+        display: none;
+    }
+    .woocommerce #content table.cart .product-thumbnail, .woocommerce table.cart .product-thumbnail, .woocommerce-page #content table.cart .product-thumbnail, .woocommerce-page table.cart .product-thumbnail{
+        display: none;
+    }
+    .woocommerce table.shop_table_responsive tr td, .woocommerce-page table.shop_table_responsive tr td {
+        display: block;
+        text-align: right !important;
+        padding: 9px 12px 9px 0;
+    }
+    .woocommerce-cart-form__cart-item:nth-child(odd){
+        background-color: #f1f1f1;
+    }
+    .cart-collaterals{
+        padding-top: 30px;
+    }
+    .cart_totals > table > tbody > tr.order-total{
+        display: flex;
+    }
+    .cart_totals > table > tbody > tr.order-total td{
+        display: flex;
+        max-width: 100%;
+        flex: 0 0 100%;
+        justify-content: space-between;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .woocommerce a.button.alt{
+        width: 100%;
+        max-width: 100%;
+    }
+    /* Cart */
 }
 @media (max-width: 575px){
     .header__social__box__items {
