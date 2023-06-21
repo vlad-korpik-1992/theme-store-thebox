@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TheBox functions and definitions
  *
@@ -7,9 +8,9 @@
  * @package TheBox
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
 /**
@@ -19,17 +20,18 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function thebox_setup() {
+function thebox_setup()
+{
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on TheBox, use a find and replace
 		* to change 'thebox' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'thebox', get_template_directory() . '/languages' );
+	load_theme_textdomain('thebox', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	add_theme_support('automatic-feed-links');
 
 	/*
 		* Let WordPress manage the document title.
@@ -37,19 +39,19 @@ function thebox_setup() {
 		* hard-coded <title> tag in the document head, and expect WordPress to
 		* provide it for us.
 		*/
-	add_theme_support( 'title-tag' );
+	add_theme_support('title-tag');
 
 	/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'thebox' ),
+			'menu-1' => esc_html__('Primary', 'thebox'),
 		)
 	);
 
@@ -83,7 +85,7 @@ function thebox_setup() {
 	);
 
 	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support('customize-selective-refresh-widgets');
 
 	/**
 	 * Add support for core custom logo.
@@ -100,7 +102,7 @@ function thebox_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'thebox_setup' );
+add_action('after_setup_theme', 'thebox_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +111,24 @@ add_action( 'after_setup_theme', 'thebox_setup' );
  *
  * @global int $content_width
  */
-function thebox_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'thebox_content_width', 640 );
+function thebox_content_width()
+{
+	$GLOBALS['content_width'] = apply_filters('thebox_content_width', 640);
 }
-add_action( 'after_setup_theme', 'thebox_content_width', 0 );
+add_action('after_setup_theme', 'thebox_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function thebox_widgets_init() {
+function thebox_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'thebox' ),
+			'name'          => esc_html__('Sidebar', 'thebox'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'thebox' ),
+			'description'   => esc_html__('Add widgets here.', 'thebox'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,38 +136,39 @@ function thebox_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'thebox_widgets_init' );
+add_action('widgets_init', 'thebox_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
 
-add_action( 'wp_enqueue_scripts', 'thebox_scripts' );
+add_action('wp_enqueue_scripts', 'thebox_scripts');
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
-add_theme_support( 'post-thumbnails', array( 'post' ) );
+add_theme_support('post-thumbnails', array('post'));
 
-function thebox_scripts() {
-	wp_enqueue_style( 'thebox-style', get_stylesheet_uri(), array(), _S_VERSION );
-	
-	wp_deregister_script( 'jquery' );
+function thebox_scripts()
+{
+	wp_enqueue_style('thebox-style', get_stylesheet_uri(), array(), _S_VERSION);
 
-	wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery-3.7.0.min.js', array(), null, true );
+	wp_deregister_script('jquery');
 
-    wp_enqueue_script( 'jquery' );
+	wp_register_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.7.0.min.js', array(), null, true);
 
-	wp_register_script( 'main-script', get_template_directory_uri() . '/assets/js/main.js', array(), null, true );
+	wp_enqueue_script('jquery');
 
-    wp_enqueue_script( 'main-script' );
+	wp_register_script('main-script', get_template_directory_uri() . '/assets/js/main.js', array(), null, true);
 
-	wp_enqueue_script( 'thebox-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('main-script');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('thebox-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'thebox_scripts' );
+add_action('wp_enqueue_scripts', 'thebox_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -188,14 +193,14 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
 /**
  * Load WooCommerce compatibility file.
  */
-if ( class_exists( 'WooCommerce' ) ) {
+if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
@@ -203,35 +208,37 @@ if ( class_exists( 'WooCommerce' ) ) {
 add_action('wp_ajax_myfilter', 'filter_function');
 add_action('wp_ajax_nopriv_myfilter', 'filter_function');
 
-function filter_function(){
+function filter_function()
+{
 	$slug = $_POST['productCat'];
 	$response = '';
 	$args = array(
-        'post_type' => 'product',
-        'post_status'   => 'publish',
+		'post_type' => 'product',
+		'post_status'   => 'publish',
 		'orderby' => array(
 			'price' => 'DESC'
 		),
-        'tax_query' => array(
-    		array(
-        			'taxonomy' => 'product_cat',
-         			'field' => 'slug',
-        			'terms' => $slug, 
-    		)
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field' => 'slug',
+				'terms' => $slug,
+			)
 		),
-    ); 
-	$query = new WP_Query( $args );
-	if ( $query->have_posts()) :
+	);
+	$query = new WP_Query($args);
+	if ($query->have_posts()) :
 		$item = 1;
-		while ( $query->have_posts() ) : $query->the_post();
-			set_query_var( 'item', $item );
+		while ($query->have_posts()) : $query->the_post();
+			set_query_var('item', $item);
 			$response .= get_template_part('./template-parts/filter');
-			$item++ ;
-		endwhile; wp_reset_postdata();
-		if($item % 2 == 0 || $item == 1):
+			$item++;
+		endwhile;
+		wp_reset_postdata();
+		if ($item % 2 == 0 || $item == 1) :
 			$response .= '<div class="products__box__half products__box__half--borderrnone products__box__half--empty"><div class="products__box__half__inner"></div></div>';
-		?>
-			
+?>
+
 	<?php
 		endif;
 	endif;
@@ -245,19 +252,21 @@ function filter_function(){
 add_action('wp_ajax_modalOpen', 'open_modal');
 add_action('wp_ajax_nopriv_modalOpen', 'open_modal');
 
-function open_modal(){
+function open_modal()
+{
 	$productId = $_POST['productId'];
 	$response = '';
 	$args = array(
 		'post_type' => 'product',
-        'posts_per_page' => 1,
-    	'post__in'=> array($productId)
-    ); 
-	$query = new WP_Query( $args );
-	if ( $query->have_posts()) : 
-		while ( $query->have_posts() ) : $query->the_post();
+		'posts_per_page' => 1,
+		'post__in' => array($productId)
+	);
+	$query = new WP_Query($args);
+	if ($query->have_posts()) :
+		while ($query->have_posts()) : $query->the_post();
 			$response .= get_template_part('./template-parts/get-product');
-		endwhile; wp_reset_postdata();
+		endwhile;
+		wp_reset_postdata();
 	endif;
 	echo $response;
 	exit;
@@ -268,136 +277,331 @@ function open_modal(){
 
 /*Ajaxify header cart items count in Woocommerce*/
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'wc_refresh_mini_cart_count');
-function wc_refresh_mini_cart_count($fragments){
-    ob_start();
-    $items_count = WC()->cart->get_cart_contents_count();
-    ?>
-    <div div id="mini-cart-count" class="bascket__num"><?php echo $items_count ? $items_count : '0'; ?></div>
-    <?php
-        $fragments['#mini-cart-count'] = ob_get_clean();
-    return $fragments;
+add_filter('woocommerce_add_to_cart_fragments', 'wc_refresh_mini_cart_count');
+function wc_refresh_mini_cart_count($fragments)
+{
+	ob_start();
+	$items_count = WC()->cart->get_cart_contents_count();
+	?>
+	<div div id="mini-cart-count" class="bascket__num"><?php echo $items_count ? $items_count : '0'; ?></div>
+<?php
+	$fragments['#mini-cart-count'] = ob_get_clean();
+	return $fragments;
 }
 
-/* С сушами работает*/
+/* Add Remove input page checkout */
 
-function webroom_add_multiple_products_to_cart( $url = false ) {
-        
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_lastname');
+function custom_override_checkout_unset_lastname($fields)
+{
+	unset($fields['billing']['billing_last_name']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_company');
+function custom_override_checkout_unset_company($fields)
+{
+	unset($fields['billing']['billing_company']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_country');
+function custom_override_checkout_unset_country($fields)
+{
+	unset($fields['billing']['billing_country']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_city');
+function custom_override_checkout_unset_city($fields)
+{
+	unset($fields['billing']['billing_city']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_email');
+function custom_override_checkout_unset_email($fields)
+{
+	unset($fields['billing']['billing_email']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_address_1');
+function custom_override_checkout_unset_address_1($fields)
+{
+	unset($fields['billing']['billing_address_1']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_address_2');
+function custom_override_checkout_unset_address_2($fields)
+{
+	unset($fields['billing']['billing_address_2']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_state');
+function custom_override_checkout_unset_state($fields)
+{
+	unset($fields['billing']['billing_state']);
+	return $fields;
+}
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_unset_postcode');
+function custom_override_checkout_unset_postcode($fields)
+{
+	unset($fields['billing']['billing_postcode']);
+	return $fields;
+}
+
+/* Добавление новых полей */
+
+add_action('woocommerce_before_order_notes', 'my_custom_checkout_field');
+
+function my_custom_checkout_field($checkout)
+{
+
+	echo '<div id="my_field_street"><h2>' . __('') . '</h2>';
+
+	woocommerce_form_field('my_field_street', array(
+		'type'          => 'text',
+		'required'		=> true,
+		'class'         => array('my-field-street form-row-wide'),
+		'label'         => __('Адрес доставки'),
+		'placeholder'   => __('Адрес доставки'),
+	), $checkout->get_value('my_field_street'));
+
+	echo '</div>';
+
+	echo '<div id="my_field_room">';
+
+	woocommerce_form_field('my_field_house_number', array(
+		'type'          => 'number',
+		'required'		=> false,
+		'class'         => array('my-field-class form-row-wide'),
+		'label'         => __('Подъезд'),
+		'placeholder'   => __('0'),
+	), $checkout->get_value('my_field_house_number'));
+
+	woocommerce_form_field('my_field_floor', array(
+		'type'          => 'number',
+		'required'		=> false,
+		'class'         => array('my-field-class form-row-wide'),
+		'label'         => __('Этаж'),
+		'placeholder'   => __('0'),
+	), $checkout->get_value('my_field_floor'));
+
+	woocommerce_form_field('my_field_room', array(
+		'type'          => 'number',
+		'required'		=> false,
+		'class'         => array('my-field-class form-row-wide my-field-class--room'),
+		'label'         => __('Квартира'),
+		'placeholder'   => __('0'),
+	), $checkout->get_value('my_field_room'));
+
+	echo '</div>';
+
+	echo '<div id="my_field_street"><h2>' . __('Примечание к заказу') . '</h2>';
+	echo '<div class="warning">
+			<div class="warning__items">
+				<div class="warning__items__circle">!</div>
+				<p>Минимальная сумма заказа: 15 BYN</p>
+			</div>
+			<div class="warning__items">
+				<div class="warning__items__circle">!</div>
+				<p>Расчет акционных пицц производится отдельно оператором</p>
+			</div>
+		</div>';
+	echo '</div>';
+
+	echo '<div id="my_field_street"><h2>' . __('Способ доставки') . '</h2>';
+
+    woocommerce_form_field( 'shipping_method', array(
+        'type'          => 'radio',
+		'required'		=> true,
+        'class'         => array(''),
+		'options' => array(
+			'Доставка' => 'Доставка',
+			'Самовывоз' => 'Самовывоз',
+		),
+        ), $checkout->get_value( 'shipping_method' ));
+
+    echo '</div>';
+
+	echo '<div id="my_field_street"><h2>' . __('') . '</h2>';
+
+    woocommerce_form_field( 'checkbox_method', array(
+        'type'          => 'checkbox',
+		'required'		=> true,
+        'class'         => array(''),
+		'label'         => __('Вы даете согласие на обработку своих персональных данных'),
+        ), $checkout->get_value( 'checkbox_method' ));
+
+    echo '</div>';
+}
+
+add_action( 'woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta' );
+
+function my_custom_checkout_field_update_order_meta( $order_id ) {
+    if ( ! empty( $_POST['my_field_street'] ) ) {
+        update_post_meta( $order_id, 'Адрес доставки', sanitize_text_field( $_POST['my_field_street'] ) );
+    }
+	if ( ! empty( $_POST['my_field_house_number'] ) ) {
+        update_post_meta( $order_id, 'Подъезд', sanitize_text_field( $_POST['my_field_house_number'] ) );
+    }
+	if ( ! empty( $_POST['my_field_floor'] ) ) {
+        update_post_meta( $order_id, 'Этаж', sanitize_text_field( $_POST['my_field_floor'] ) );
+    }
+	if ( ! empty( $_POST['my_field_room'] ) ) {
+        update_post_meta( $order_id, 'Квартира', sanitize_text_field( $_POST['my_field_room'] ) );
+    }
+	if ( ! empty( $_POST['shipping_method'] ) ) {
+        update_post_meta( $order_id, 'Способ доставки', sanitize_text_field( $_POST['shipping_method'] ) );
+    }
+}
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
+
+function my_custom_checkout_field_display_admin_order_meta($order){
+	echo '<p><strong>'.__('Адрес доставки').':</strong> ' . get_post_meta( $order->id, 'Адрес доставки', true ) . '</p>';
+	echo '<p><strong>'.__('Подъезд').':</strong> ' . get_post_meta( $order->id, 'Подъезд', true ) . '</p>';
+	echo '<p><strong>'.__('Этаж').':</strong> ' . get_post_meta( $order->id, 'Этаж', true ) . '</p>';
+	echo '<p><strong>'.__('Квартира').':</strong> ' . get_post_meta( $order->id, 'Квартира', true ) . '</p>';
+	echo '<p><strong>'.__('Способ доставки').':</strong> ' . get_post_meta( $order->id, 'Способ доставки', true ) . '</p>';
+}
+
+/* Добавление новых полей */
+
+/* Редактирование существующих полей */
+add_filter('woocommerce_default_address_fields', 'override_default_address_checkout_fields', 20, 1);
+function override_default_address_checkout_fields($address_fields)
+{
+	$address_fields['first_name']['placeholder'] = 'Имя';
+	return $address_fields;
+}
+add_filter('woocommerce_checkout_fields', 'override_billing_checkout_fields', 20, 1);
+function override_billing_checkout_fields($fields)
+{
+	$fields['billing']['billing_phone']['placeholder'] = '+375 00 111 111 1';
+	return $fields;
+}
+
+
+/* Добавление нескольких товаров в корзину по url */
+
+function webroom_add_multiple_products_to_cart($url = false)
+{
+
 	// Make sure WC is installed, and add-to-cart qauery arg exists, and contains at least one comma.
-	
-			if ( ! class_exists( 'WC_Form_Handler' ) || empty( $_REQUEST['add-to-cart'] ) || false === strpos( $_REQUEST['add-to-cart'], ',' ) ) {
-					return;
-			}
-	
-			
+
+	if (!class_exists('WC_Form_Handler') || empty($_REQUEST['add-to-cart']) || false === strpos($_REQUEST['add-to-cart'], ',')) {
+		return;
+	}
+
+
 	// Remove WooCommerce's hook, as it's useless (doesn't handle multiple products).
-	
-			remove_action( 'wp_loaded', array( 'WC_Form_Handler', 'add_to_cart_action' ), 20 );
-	
-			$product_ids = explode( ',', $_REQUEST['add-to-cart'] );
-			$count       = count( $product_ids );
-			$number      = 0;
-	
-			foreach ( $product_ids as $id_and_quantity ) {
-					
-	// Check for quantities defined in curie notation (<product_id>:<product_quantity>)
-	
-					
-					$id_and_quantity = explode( ':', $id_and_quantity );
-					$product_id = $id_and_quantity[0];
-	
-					$_REQUEST['quantity'] = ! empty( $id_and_quantity[1] ) ? absint( $id_and_quantity[1] ) : 1;
-	
-					if ( ++$number === $count ) {
-							
-	// Ok, final item, let's send it back to woocommerce's add_to_cart_action method for handling.
-	
-							$_REQUEST['add-to-cart'] = $product_id;
-	
-							return WC_Form_Handler::add_to_cart_action( $url );
-					}
-	
-					$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $product_id ) );
-					$was_added_to_cart = false;
-					$adding_to_cart    = wc_get_product( $product_id );
-	
-					if ( ! $adding_to_cart ) {
-							continue;
-					}
-	
-					$add_to_cart_handler = apply_filters( 'woocommerce_add_to_cart_handler', $adding_to_cart->get_type(), $adding_to_cart );
-	
-					
-	// Variable product handling
-	
-					if ( 'variable' === $add_to_cart_handler ) {
-							woo_hack_invoke_private_method( 'WC_Form_Handler', 'add_to_cart_handler_variable', $product_id );
-	
-					
-	// Grouped Products
-	
-					} elseif ( 'grouped' === $add_to_cart_handler ) {
-							woo_hack_invoke_private_method( 'WC_Form_Handler', 'add_to_cart_handler_grouped', $product_id );
-	
-					
-	// Custom Handler
-	
-					} elseif ( has_action( 'woocommerce_add_to_cart_handler_' . $add_to_cart_handler ) ){
-							do_action( 'woocommerce_add_to_cart_handler_' . $add_to_cart_handler, $url );
-	
-					
-	// Simple Products
-	
-					} else {
-							woo_hack_invoke_private_method( 'WC_Form_Handler', 'add_to_cart_handler_simple', $product_id );
-					}
-			}
+
+	remove_action('wp_loaded', array('WC_Form_Handler', 'add_to_cart_action'), 20);
+
+	$product_ids = explode(',', $_REQUEST['add-to-cart']);
+	$count       = count($product_ids);
+	$number      = 0;
+
+	foreach ($product_ids as $id_and_quantity) {
+
+		// Check for quantities defined in curie notation (<product_id>:<product_quantity>)
+
+
+		$id_and_quantity = explode(':', $id_and_quantity);
+		$product_id = $id_and_quantity[0];
+
+		$_REQUEST['quantity'] = !empty($id_and_quantity[1]) ? absint($id_and_quantity[1]) : 1;
+
+		if (++$number === $count) {
+
+			// Ok, final item, let's send it back to woocommerce's add_to_cart_action method for handling.
+
+			$_REQUEST['add-to-cart'] = $product_id;
+
+			return WC_Form_Handler::add_to_cart_action($url);
+		}
+
+		$product_id        = apply_filters('woocommerce_add_to_cart_product_id', absint($product_id));
+		$was_added_to_cart = false;
+		$adding_to_cart    = wc_get_product($product_id);
+
+		if (!$adding_to_cart) {
+			continue;
+		}
+
+		$add_to_cart_handler = apply_filters('woocommerce_add_to_cart_handler', $adding_to_cart->get_type(), $adding_to_cart);
+
+
+		// Variable product handling
+
+		if ('variable' === $add_to_cart_handler) {
+			woo_hack_invoke_private_method('WC_Form_Handler', 'add_to_cart_handler_variable', $product_id);
+
+
+			// Grouped Products
+
+		} elseif ('grouped' === $add_to_cart_handler) {
+			woo_hack_invoke_private_method('WC_Form_Handler', 'add_to_cart_handler_grouped', $product_id);
+
+
+			// Custom Handler
+
+		} elseif (has_action('woocommerce_add_to_cart_handler_' . $add_to_cart_handler)) {
+			do_action('woocommerce_add_to_cart_handler_' . $add_to_cart_handler, $url);
+
+
+			// Simple Products
+
+		} else {
+			woo_hack_invoke_private_method('WC_Form_Handler', 'add_to_cart_handler_simple', $product_id);
+		}
 	}
-	
-	// Fire before the WC_Form_Handler::add_to_cart_action callback.
-	
-	add_action( 'wp_loaded', 'webroom_add_multiple_products_to_cart', 15 );
-	
-	
-	/**
-	 * Invoke class private method
-	 *
-	 * @since   0.1.0
-	 *
-	 * @param   string $class_name
-	 * @param   string $methodName
-	 *
-	 * @return  mixed
-	 */
-	
-	function woo_hack_invoke_private_method( $class_name, $methodName ) {
-			if ( version_compare( phpversion(), '5.3', '<' ) ) {
-					throw new Exception( 'PHP version does not support ReflectionClass::setAccessible()', __LINE__ );
-			}
-	
-			$args = func_get_args();
-			unset( $args[0], $args[1] );
-			$reflection = new ReflectionClass( $class_name );
-			$method = $reflection->getMethod( $methodName );
-			$method->setAccessible( true );
-	
-			
+}
+
+// Fire before the WC_Form_Handler::add_to_cart_action callback.
+
+add_action('wp_loaded', 'webroom_add_multiple_products_to_cart', 15);
+
+
+/**
+ * Invoke class private method
+ *
+ * @since   0.1.0
+ *
+ * @param   string $class_name
+ * @param   string $methodName
+ *
+ * @return  mixed
+ */
+
+function woo_hack_invoke_private_method($class_name, $methodName)
+{
+	if (version_compare(phpversion(), '5.3', '<')) {
+		throw new Exception('PHP version does not support ReflectionClass::setAccessible()', __LINE__);
+	}
+
+	$args = func_get_args();
+	unset($args[0], $args[1]);
+	$reflection = new ReflectionClass($class_name);
+	$method = $reflection->getMethod($methodName);
+	$method->setAccessible(true);
+
+
 	//$args = array_merge( array( $class_name ), $args );
-	
-			$args = array_merge( array( $reflection ), $args );
-			return call_user_func_array( array( $method, 'invoke' ), $args );
-	}
-	
+
+	$args = array_merge(array($reflection), $args);
+	return call_user_func_array(array($method, 'invoke'), $args);
+}
+
 
 /**/
 
 /* Breadcrumbs */
 
-function kama_breadcrumbs( $sep = ' » ', $l10n = array(), $args = array() ){
+function kama_breadcrumbs($sep = ' » ', $l10n = array(), $args = array())
+{
 	$kb = new Kama_Breadcrumbs;
-	echo $kb->get_crumbs( $sep, $l10n, $args );
+	echo $kb->get_crumbs($sep, $l10n, $args);
 }
-class Kama_Breadcrumbs {
+class Kama_Breadcrumbs
+{
 
 	public $arg;
 
@@ -431,27 +635,27 @@ class Kama_Breadcrumbs {
 
 	static $args = array(
 
-		'on_front_page'   => true,  
+		'on_front_page'   => true,
 
-		'show_post_title' => true,  
+		'show_post_title' => true,
 
-		'show_term_title' => true,  
+		'show_term_title' => true,
 
-		'title_patt'      => '<span class="breadcrumbs__page">%s</span>', 
+		'title_patt'      => '<span class="breadcrumbs__page">%s</span>',
 
-		'last_sep'        => true,  
+		'last_sep'        => true,
 
 		'markup'          => 'schema.org',
 
-										  
 
-										  
+
+
 
 		'priority_tax'    => array('category'),
 
 		'priority_terms'  => array(),
 
-        'nofollow' => false,
+		'nofollow' => false,
 
 		'sep'             => '',
 
@@ -463,7 +667,8 @@ class Kama_Breadcrumbs {
 
 
 
-	function get_crumbs( $sep, $l10n, $args ){
+	function get_crumbs($sep, $l10n, $args)
+	{
 
 		global $post, $wp_query, $wp_post_types;
 
@@ -473,29 +678,29 @@ class Kama_Breadcrumbs {
 
 
 
-		$loc = (object) array_merge( apply_filters('kama_breadcrumbs_default_loc', self::$l10n ), $l10n );
+		$loc = (object) array_merge(apply_filters('kama_breadcrumbs_default_loc', self::$l10n), $l10n);
 
-		$arg = (object) array_merge( apply_filters('kama_breadcrumbs_default_args', self::$args ), $args );
-
-
-
-		$arg->sep = '<span class="kb_sep">'. $arg->sep .'</span>'; // дополним
+		$arg = (object) array_merge(apply_filters('kama_breadcrumbs_default_args', self::$args), $args);
 
 
 
-		$sep = & $arg->sep;
-
-		$this->arg = & $arg;
+		$arg->sep = '<span class="kb_sep">' . $arg->sep . '</span>'; // дополним
 
 
 
-		if(1){
+		$sep = &$arg->sep;
 
-			$mark = & $arg->markup;
+		$this->arg = &$arg;
 
 
 
-			if( ! $mark ) $mark = array(
+		if (1) {
+
+			$mark = &$arg->markup;
+
+
+
+			if (!$mark) $mark = array(
 
 				'wrappatt'  => '<div class="breadcrumbs__list">%s</div>',
 
@@ -505,7 +710,7 @@ class Kama_Breadcrumbs {
 
 			);
 
-			elseif( $mark === 'rdf.data-vocabulary.org' ) $mark = array(
+			elseif ($mark === 'rdf.data-vocabulary.org') $mark = array(
 
 				'wrappatt'   => '<div class="breadcrumbs__list" prefix="v: http://rdf.data-vocabulary.org/#">%s</div>',
 
@@ -515,7 +720,7 @@ class Kama_Breadcrumbs {
 
 			);
 
-			elseif( $mark === 'schema.org' ) $mark = array(
+			elseif ($mark === 'schema.org') $mark = array(
 
 				'wrappatt'   => '<div class="breadcrumbs__list" itemscope itemtype="http://schema.org/BreadcrumbList">%s</div>',
 
@@ -527,18 +732,17 @@ class Kama_Breadcrumbs {
 
 
 
-			elseif( ! is_array($mark) )
+			elseif (!is_array($mark))
 
-				die( __CLASS__ .': "markup" parameter must be array...');
+				die(__CLASS__ . ': "markup" parameter must be array...');
 
 
 
 			$wrappatt  = $mark['wrappatt'];
 
-			$arg->linkpatt  = $arg->nofollow ? str_replace('<a ','<a rel="nofollow"', $mark['linkpatt']) : $mark['linkpatt'];
+			$arg->linkpatt  = $arg->nofollow ? str_replace('<a ', '<a rel="nofollow"', $mark['linkpatt']) : $mark['linkpatt'];
 
-			$arg->sep      .= $mark['sep_after']."\n";
-
+			$arg->sep      .= $mark['sep_after'] . "\n";
 		}
 
 
@@ -553,15 +757,12 @@ class Kama_Breadcrumbs {
 
 		$ptype = null;
 
-		if( empty($post) ){
+		if (empty($post)) {
 
-			if( isset($q_obj->taxonomy) )
+			if (isset($q_obj->taxonomy))
 
-				$ptype = & $wp_post_types[ get_taxonomy($q_obj->taxonomy)->object_type[0] ];
-
-		}
-
-		else $ptype = & $wp_post_types[ $post->post_type ];
+				$ptype = &$wp_post_types[get_taxonomy($q_obj->taxonomy)->object_type[0]];
+		} else $ptype = &$wp_post_types[$post->post_type];
 
 
 
@@ -569,9 +770,9 @@ class Kama_Breadcrumbs {
 
 		$arg->pg_end = '';
 
-		if( ($paged_num = get_query_var('paged')) || ($paged_num = get_query_var('page')) )
+		if (($paged_num = get_query_var('paged')) || ($paged_num = get_query_var('page')))
 
-			$arg->pg_end = $sep . sprintf( $loc->paged, (int) $paged_num );
+			$arg->pg_end = $sep . sprintf($loc->paged, (int) $paged_num);
 
 
 
@@ -583,189 +784,154 @@ class Kama_Breadcrumbs {
 
 
 
-		if( is_front_page() ){
+		if (is_front_page()) {
 
-			return $arg->on_front_page ? sprintf( $wrappatt, ( $paged_num ? sprintf($linkpatt, get_home_url(), $loc->home) . $pg_end : $loc->home ) ) : '';
-
+			return $arg->on_front_page ? sprintf($wrappatt, ($paged_num ? sprintf($linkpatt, get_home_url(), $loc->home) . $pg_end : $loc->home)) : '';
 		}
 
 		// страница записей, когда для главной установлена отдельная страница.
 
-		elseif( is_home() ) {
+		elseif (is_home()) {
 
-			$out = $paged_num ? ( sprintf( $linkpatt, get_permalink($q_obj), esc_html($q_obj->post_title) ) . $pg_end ) : esc_html($q_obj->post_title);
-
-		}
-
-		elseif( is_404() ){
+			$out = $paged_num ? (sprintf($linkpatt, get_permalink($q_obj), esc_html($q_obj->post_title)) . $pg_end) : esc_html($q_obj->post_title);
+		} elseif (is_404()) {
 
 			$out = $loc->_404;
+		} elseif (is_search()) {
 
-		}
+			$out = sprintf($loc->search, esc_html($GLOBALS['s']));
+		} elseif (is_author()) {
 
-		elseif( is_search() ){
+			$tit = sprintf($loc->author, esc_html($q_obj->display_name));
 
-			$out = sprintf( $loc->search, esc_html( $GLOBALS['s'] ) );
+			$out = ($paged_num ? sprintf($linkpatt, get_author_posts_url($q_obj->ID, $q_obj->user_nicename) . $pg_end, $tit) : $tit);
+		} elseif (is_year() || is_month() || is_day()) {
 
-		}
-
-		elseif( is_author() ){
-
-			$tit = sprintf( $loc->author, esc_html($q_obj->display_name) );
-
-			$out = ( $paged_num ? sprintf( $linkpatt, get_author_posts_url( $q_obj->ID, $q_obj->user_nicename ) . $pg_end, $tit ) : $tit );
-
-		}
-
-		elseif( is_year() || is_month() || is_day() ){
-
-			$y_url  = get_year_link( $year = get_the_time('Y') );
+			$y_url  = get_year_link($year = get_the_time('Y'));
 
 
 
-			if( is_year() ){
+			if (is_year()) {
 
-				$tit = sprintf( $loc->year, $year );
+				$tit = sprintf($loc->year, $year);
 
-				$out = ( $paged_num ? sprintf($linkpatt, $y_url, $tit) . $pg_end : $tit );
-
+				$out = ($paged_num ? sprintf($linkpatt, $y_url, $tit) . $pg_end : $tit);
 			}
 
 			// month day
 
 			else {
 
-				$y_link = sprintf( $linkpatt, $y_url, $year);
+				$y_link = sprintf($linkpatt, $y_url, $year);
 
-				$m_url  = get_month_link( $year, get_the_time('m') );
+				$m_url  = get_month_link($year, get_the_time('m'));
 
 
 
-				if( is_month() ){
+				if (is_month()) {
 
-					$tit = sprintf( $loc->month, get_the_time('F') );
+					$tit = sprintf($loc->month, get_the_time('F'));
 
-					$out = $y_link . $sep . ( $paged_num ? sprintf( $linkpatt, $m_url, $tit ) . $pg_end : $tit );
+					$out = $y_link . $sep . ($paged_num ? sprintf($linkpatt, $m_url, $tit) . $pg_end : $tit);
+				} elseif (is_day()) {
 
-				}
-
-				elseif( is_day() ){
-
-					$m_link = sprintf( $linkpatt, $m_url, get_the_time('F'));
+					$m_link = sprintf($linkpatt, $m_url, get_the_time('F'));
 
 					$out = $y_link . $sep . $m_link . $sep . get_the_time('l');
-
 				}
-
 			}
+		} elseif (is_singular() && $ptype->hierarchical) {
 
-		}
+			$out = $this->_add_title($this->_page_crumbs($post), $post);
+		} else {
 
-		elseif( is_singular() && $ptype->hierarchical ){
-
-			$out = $this->_add_title( $this->_page_crumbs($post), $post );
-
-		}
-
-		else {
-
-			$term = $q_obj; 
+			$term = $q_obj;
 
 
 
-			if( is_singular() ){
+			if (is_singular()) {
 
-				if( is_attachment() && $post->post_parent ){
+				if (is_attachment() && $post->post_parent) {
 
-					$save_post = $post; 
+					$save_post = $post;
 
 					$post = get_post($post->post_parent);
-
 				}
 
-				$taxonomies = get_object_taxonomies( $post->post_type );
+				$taxonomies = get_object_taxonomies($post->post_type);
 
-				$taxonomies = array_intersect( $taxonomies, get_taxonomies( array('hierarchical' => true, 'public' => true) ) );
+				$taxonomies = array_intersect($taxonomies, get_taxonomies(array('hierarchical' => true, 'public' => true)));
 
 
 
-				if( $taxonomies ){
+				if ($taxonomies) {
 
 					// сортируем по приоритету
 
-					if( ! empty($arg->priority_tax) ){
+					if (!empty($arg->priority_tax)) {
 
-						usort( $taxonomies, function($a,$b)use($arg){
+						usort($taxonomies, function ($a, $b) use ($arg) {
 
 							$a_index = array_search($a, $arg->priority_tax);
 
-							if( $a_index === false ) $a_index = 9999999;
+							if ($a_index === false) $a_index = 9999999;
 
 
 
 							$b_index = array_search($b, $arg->priority_tax);
 
-							if( $b_index === false ) $b_index = 9999999;
+							if ($b_index === false) $b_index = 9999999;
 
 
 
-							return ( $b_index === $a_index ) ? 0 : ( $b_index < $a_index ? 1 : -1 ); // меньше индекс - выше
+							return ($b_index === $a_index) ? 0 : ($b_index < $a_index ? 1 : -1); // меньше индекс - выше
 
-						} );
-
+						});
 					}
 
 
 
 					// пробуем получить термины, в порядке приоритета такс
 
-					foreach( $taxonomies as $taxname ){
+					foreach ($taxonomies as $taxname) {
 
-						if( $terms = get_the_terms( $post->ID, $taxname ) ){
+						if ($terms = get_the_terms($post->ID, $taxname)) {
 
 							// проверим приоритетные термины для таксы
 
-							$prior_terms = & $arg->priority_terms[ $taxname ];
+							$prior_terms = &$arg->priority_terms[$taxname];
 
-							if( $prior_terms && count($terms) > 2 ){
+							if ($prior_terms && count($terms) > 2) {
 
-								foreach( (array) $prior_terms as $term_id ){
+								foreach ((array) $prior_terms as $term_id) {
 
 									$filter_field = is_numeric($term_id) ? 'term_id' : 'slug';
 
-									$_terms = wp_list_filter( $terms, array($filter_field=>$term_id) );
+									$_terms = wp_list_filter($terms, array($filter_field => $term_id));
 
 
 
-									if( $_terms ){
+									if ($_terms) {
 
-										$term = array_shift( $_terms );
+										$term = array_shift($_terms);
 
 										break;
-
 									}
-
 								}
+							} else
 
-							}
-
-							else
-
-								$term = array_shift( $terms );
+								$term = array_shift($terms);
 
 
 
 							break;
-
 						}
-
 					}
-
 				}
 
 
 
-				if( isset($save_post) ) $post = $save_post; // вернем обратно (для вложений)
+				if (isset($save_post)) $post = $save_post; // вернем обратно (для вложений)
 
 			}
 
@@ -777,99 +943,89 @@ class Kama_Breadcrumbs {
 
 			// все виды записей с терминами или термины
 
-			if( $term && isset($term->term_id) ){
+			if ($term && isset($term->term_id)) {
 
-				$term = apply_filters('kama_breadcrumbs_term', $term );
+				$term = apply_filters('kama_breadcrumbs_term', $term);
 
 
 
 				// attachment
 
-				if( is_attachment() ){
+				if (is_attachment()) {
 
-					if( ! $post->post_parent )
+					if (!$post->post_parent)
 
-						$out = sprintf( $loc->attachment, esc_html($post->post_title) );
+						$out = sprintf($loc->attachment, esc_html($post->post_title));
 
 					else {
 
-						if( ! $out = apply_filters('attachment_tax_crumbs', '', $term, $this ) ){
+						if (!$out = apply_filters('attachment_tax_crumbs', '', $term, $this)) {
 
-							$_crumbs    = $this->_tax_crumbs( $term, 'self' );
+							$_crumbs    = $this->_tax_crumbs($term, 'self');
 
-							$parent_tit = sprintf( $linkpatt, get_permalink($post->post_parent), get_the_title($post->post_parent) );
+							$parent_tit = sprintf($linkpatt, get_permalink($post->post_parent), get_the_title($post->post_parent));
 
-							$_out = implode( $sep, array($_crumbs, $parent_tit) );
+							$_out = implode($sep, array($_crumbs, $parent_tit));
 
-							$out = $this->_add_title( $_out, $post );
-
+							$out = $this->_add_title($_out, $post);
 						}
-
 					}
-
 				}
 
 				// single
 
-				elseif( is_single() ){
+				elseif (is_single()) {
 
-					if( ! $out = apply_filters('post_tax_crumbs', '', $term, $this ) ){
+					if (!$out = apply_filters('post_tax_crumbs', '', $term, $this)) {
 
-						$_crumbs = $this->_tax_crumbs( $term, 'self' );
+						$_crumbs = $this->_tax_crumbs($term, 'self');
 
-						$out = $this->_add_title( $_crumbs, $post );
-
+						$out = $this->_add_title($_crumbs, $post);
 					}
-
 				}
 
 				// не древовидная такса (метки)
 
-				elseif( ! is_taxonomy_hierarchical($term->taxonomy) ){
+				elseif (!is_taxonomy_hierarchical($term->taxonomy)) {
 
 					// метка
 
-					if( is_tag() )
+					if (is_tag())
 
-						$out = $this->_add_title('', $term, sprintf( $loc->tag, esc_html($term->name) ) );
+						$out = $this->_add_title('', $term, sprintf($loc->tag, esc_html($term->name)));
 
 					// такса
 
-					elseif( is_tax() ){
+					elseif (is_tax()) {
 
 						$post_label = $ptype->labels->name;
 
-						$tax_label = $GLOBALS['wp_taxonomies'][ $term->taxonomy ]->labels->name;
+						$tax_label = $GLOBALS['wp_taxonomies'][$term->taxonomy]->labels->name;
 
-						$out = $this->_add_title('', $term, sprintf( $loc->tax_tag, $post_label, $tax_label, esc_html($term->name) ) );
-
+						$out = $this->_add_title('', $term, sprintf($loc->tax_tag, $post_label, $tax_label, esc_html($term->name)));
 					}
-
 				}
 
 				// древовидная такса (рибрики)
 
 				else {
 
-					if( ! $out = apply_filters('term_tax_crumbs', '', $term, $this ) ){
+					if (!$out = apply_filters('term_tax_crumbs', '', $term, $this)) {
 
-						$_crumbs = $this->_tax_crumbs( $term, 'parent' );
+						$_crumbs = $this->_tax_crumbs($term, 'parent');
 
-						$out = $this->_add_title( $_crumbs, $term, esc_html($term->name) );
-
+						$out = $this->_add_title($_crumbs, $term, esc_html($term->name));
 					}
-
 				}
-
 			}
 
 			// влоежния от записи без терминов
 
-			elseif( is_attachment() ){
+			elseif (is_attachment()) {
 
 				$parent = get_post($post->post_parent);
 
-				$parent_link = sprintf( $linkpatt, get_permalink($parent), esc_html($parent->post_title) );
+				$parent_link = sprintf($linkpatt, get_permalink($parent), esc_html($parent->post_title));
 
 				$_out = $parent_link;
 
@@ -877,47 +1033,44 @@ class Kama_Breadcrumbs {
 
 				// вложение от записи древовидного типа записи
 
-				if( is_post_type_hierarchical($parent->post_type) ){
+				if (is_post_type_hierarchical($parent->post_type)) {
 
 					$parent_crumbs = $this->_page_crumbs($parent);
 
-					$_out = implode( $sep, array( $parent_crumbs, $parent_link ) );
-
+					$_out = implode($sep, array($parent_crumbs, $parent_link));
 				}
 
 
 
-				$out = $this->_add_title( $_out, $post );
-
+				$out = $this->_add_title($_out, $post);
 			}
 
 			// записи без терминов
 
-			elseif( is_singular() ){
+			elseif (is_singular()) {
 
-				$out = $this->_add_title( '', $post );
-
+				$out = $this->_add_title('', $post);
 			}
-
 		}
 
 
 
 		// замена ссылки на архивную страницу для типа записи
 
-		$home_after = apply_filters('kama_breadcrumbs_home_after', '', $linkpatt, $sep, $ptype );
+		$home_after = apply_filters('kama_breadcrumbs_home_after', '', $linkpatt, $sep, $ptype);
 
 
 
-		if( '' === $home_after ){
+		if ('' === $home_after) {
 
 			// Ссылка на архивную страницу типа записи для: отдельных страниц этого типа; архивов этого типа; таксономий связанных с этим типом.
 
-			if( $ptype && $ptype->has_archive && ! in_array( $ptype->name, array('post','page','attachment') )
+			if (
+				$ptype && $ptype->has_archive && !in_array($ptype->name, array('post', 'page', 'attachment'))
 
-				&& ( is_post_type_archive() || is_singular() || (is_tax() && in_array($term->taxonomy, $ptype->taxonomies)) )
+				&& (is_post_type_archive() || is_singular() || (is_tax() && in_array($term->taxonomy, $ptype->taxonomies)))
 
-			){
+			) {
 
 				$pt_title = $ptype->labels->name;
 
@@ -925,47 +1078,45 @@ class Kama_Breadcrumbs {
 
 				// первая страница архива типа записи
 
-				if( is_post_type_archive() && ! $paged_num )
+				if (is_post_type_archive() && !$paged_num)
 
-					$home_after = sprintf( $this->arg->title_patt, $pt_title );
+					$home_after = sprintf($this->arg->title_patt, $pt_title);
 
 				// singular, paged post_type_archive, tax
 
-				else{
+				else {
 
-					$home_after = sprintf( $linkpatt, get_post_type_archive_link($ptype->name), $pt_title );
+					$home_after = sprintf($linkpatt, get_post_type_archive_link($ptype->name), $pt_title);
 
 
 
-					$home_after .= ( ($paged_num && ! is_tax()) ? $pg_end : $sep ); // пагинация
+					$home_after .= (($paged_num && !is_tax()) ? $pg_end : $sep); // пагинация
 
 				}
-
 			}
-
 		}
 
 
 
-		$before_out = sprintf( $linkpatt, home_url(), $loc->home ) . ( $home_after ? $sep.$home_after : ($out ? $sep : '') );
+		$before_out = sprintf($linkpatt, home_url(), $loc->home) . ($home_after ? $sep . $home_after : ($out ? $sep : ''));
 
 
 
-		$out = apply_filters('kama_breadcrumbs_pre_out', $out, $sep, $loc, $arg );
+		$out = apply_filters('kama_breadcrumbs_pre_out', $out, $sep, $loc, $arg);
 
 
 
-		$out = sprintf( $wrappatt, $before_out . $out );
+		$out = sprintf($wrappatt, $before_out . $out);
 
 
 
-		return apply_filters('kama_breadcrumbs', $out, $sep, $loc, $arg );
-
+		return apply_filters('kama_breadcrumbs', $out, $sep, $loc, $arg);
 	}
 
 
 
-	function _page_crumbs( $post ){
+	function _page_crumbs($post)
+	{
 
 		$parent = $post->post_parent;
 
@@ -973,57 +1124,55 @@ class Kama_Breadcrumbs {
 
 		$crumbs = array();
 
-		while( $parent ){
+		while ($parent) {
 
-			$page = get_post( $parent );
+			$page = get_post($parent);
 
-			$crumbs[] = sprintf( $this->arg->linkpatt, get_permalink($page), esc_html($page->post_title) );
+			$crumbs[] = sprintf($this->arg->linkpatt, get_permalink($page), esc_html($page->post_title));
 
 			$parent = $page->post_parent;
-
 		}
 
 
 
-		return implode( $this->arg->sep, array_reverse($crumbs) );
-
+		return implode($this->arg->sep, array_reverse($crumbs));
 	}
 
 
 
-	function _tax_crumbs( $term, $start_from = 'self' ){
+	function _tax_crumbs($term, $start_from = 'self')
+	{
 
 		$termlinks = array();
 
 		$term_id = ($start_from === 'parent') ? $term->parent : $term->term_id;
 
-		while( $term_id ){
+		while ($term_id) {
 
-			$term       = get_term( $term_id, $term->taxonomy );
+			$term       = get_term($term_id, $term->taxonomy);
 
-			$termlinks[] = sprintf( $this->arg->linkpatt, get_term_link($term), esc_html($term->name) );
+			$termlinks[] = sprintf($this->arg->linkpatt, get_term_link($term), esc_html($term->name));
 
 			$term_id    = $term->parent;
-
 		}
 
 
 
-		if( $termlinks )
+		if ($termlinks)
 
-			return implode( $this->arg->sep, array_reverse($termlinks) ) /*. $this->arg->sep*/;
+			return implode($this->arg->sep, array_reverse($termlinks)) /*. $this->arg->sep*/;
 
 		return '';
-
 	}
 
 
 
 	// добалвяет заголовок к переданному тексту, с учетом всех опций. Добавляет разделитель в начало, если надо.
 
-	function _add_title( $add_to, $obj, $term_title = '' ){
+	function _add_title($add_to, $obj, $term_title = '')
+	{
 
-		$arg = & $this->arg; // упростим...
+		$arg = &$this->arg; // упростим...
 
 		$title = $term_title ? $term_title : esc_html($obj->post_title); // $term_title чиститься отдельно, теги моугт быть...
 
@@ -1033,38 +1182,35 @@ class Kama_Breadcrumbs {
 
 		// пагинация
 
-		if( $arg->pg_end ){
+		if ($arg->pg_end) {
 
 			$link = $term_title ? get_term_link($obj) : get_permalink($obj);
 
-			$add_to .= ($add_to ? $arg->sep : '') . sprintf( $arg->linkpatt, $link, $title ) . $arg->pg_end;
-
+			$add_to .= ($add_to ? $arg->sep : '') . sprintf($arg->linkpatt, $link, $title) . $arg->pg_end;
 		}
 
 		// дополняем - ставим sep
 
-		elseif( $add_to ){
+		elseif ($add_to) {
 
-			if( $show_title )
+			if ($show_title)
 
-				$add_to .= $arg->sep . sprintf( $arg->title_patt, $title );
+				$add_to .= $arg->sep . sprintf($arg->title_patt, $title);
 
-			elseif( $arg->last_sep )
+			elseif ($arg->last_sep)
 
 				$add_to .= $arg->sep;
-
 		}
 
 		// sep будет потом...
 
-		elseif( $show_title )
+		elseif ($show_title)
 
-			$add_to = sprintf( $arg->title_patt, $title );
+			$add_to = sprintf($arg->title_patt, $title);
 
 
 
 		return $add_to;
-
 	}
 }
 

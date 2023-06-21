@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout Form
  *
@@ -15,68 +16,49 @@
  * @version 3.5.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+  exit;
 }
 
 ?>
-<section class="breadcrumbs">
-  <div class="wrapper">
-    <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(''); ?>
-  </div>
-</section>
-<section class="checkout">
-	<div class="wrapper">
-		<h1 class="section-head"><?php single_post_title(); ?></h1>
-		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+<div class="checkout">
+  <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
 
-		<div class="checkout__box">
-            
-            <div class="checkout__column">
-                <?php if ( $checkout->get_checkout_fields() ) : ?>
+    <div class="checkout__box">
 
-                <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+      <div class="checkout__column">
+        <?php if ($checkout->get_checkout_fields()) : ?>
 
-                <?php do_action( 'woocommerce_checkout_billing' ); ?>
-                <?php do_action( 'woocommerce_checkout_shipping' ); ?>
+          <?php do_action('woocommerce_checkout_before_customer_details'); ?>
 
-                <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+          <?php do_action( 'woocommerce_checkout_billing' ); ?>
+          <?php do_action( 'woocommerce_checkout_shipping' ); ?>
 
-                <h2 class="checkout__column__title checkout__column__title--top">Доставка:</h2>
+          <?php do_action('woocommerce_checkout_after_customer_details'); ?>
 
-                <p class="checkout__column__content--bold checkout__column__content--t0">по г. Гродно:</p>
+        <?php endif; ?>
 
-                <p class="checkout__column__content">20 BYN до подъезда; 30 BYN с подъемом на этаж</p>
+        <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
 
-                <p class="checkout__column__content--bold">в другой город:</p>
 
-                <p class="checkout__column__content">доставляем по всей РБ через транспортную компанию курьером к дому. Стоимость 30-50 BYN. Итоговую стоимость рассчитаем после подтверждения заказа</p>
+      </div>
+      <div class="checkout__column">
 
-                <p class="checkout__column__content--bold">Самовывоз со склада или нашего салона</p>
+        <h3 class="checkout__column__title">Ваш заказ</h3>
 
-                <p class="checkout__column__content--bold checkout__column__content--t0">Подробнее с информацией по доставке Вы можете ознокомится <a href="#" class="checkout__column__content__link">здесь</a></p>
-
-                <?php endif; ?>
-
-                <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-
-            </div>
-            <div class="checkout__column">
-				
-				<h3 class="checkout__column__title">Ваш заказ</h3>
-                
-                <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-                <div id="order_review" class="woocommerce-checkout-review-order">
-                    <?php do_action( 'woocommerce_checkout_order_review' ); ?>
-                </div>
-            
-                <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-
-                <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
-            </div>
+        <?php do_action('woocommerce_checkout_before_order_review'); ?>
+        <div id="order_review" class="woocommerce-checkout-review-order">
+          <?php do_action('woocommerce_checkout_order_review'); ?>
         </div>
 
-		</form>
-	</div>
-</section>
+        
+
+        <?php do_action('woocommerce_checkout_after_order_review'); ?>
+
+
+        <?php do_action('woocommerce_after_checkout_form', $checkout); ?>
+      </div>
+    </div>
+
+  </form>
+</div>
