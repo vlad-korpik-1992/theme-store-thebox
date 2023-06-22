@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="header__box__items header__box__items--center">
-                    <a href="#" class="header__box__items__logo">
+                    <a href="<?php echo site_url(); ?>" class="header__box__items__logo">
                         <img src="<?php bloginfo('template_url'); ?>/assets/img/site_name.png" alt="">
                     </a>
                 </div>

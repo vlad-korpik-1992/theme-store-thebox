@@ -223,9 +223,17 @@ section{
     line-height: 15px;
     color: #57575C;
     text-align: center;
+    transition: 0.3s all;
+}
+.header__left__link:hover{
+    color: #FFEC00;
 }
 .header__left__link img{
     padding-bottom: 8px;
+    transition: 0.3s all;
+}
+.header__left__link:hover img{
+    transform: scale(1.1);
 }
 .hero{
     background-color: #000;
@@ -271,6 +279,10 @@ section{
     padding-top: 268px;
     width: 100%;
     margin-bottom: 32px;
+    transition: 0.3s all;
+}
+.hero__box__inner:hover{
+    transform: scale(1.05);
 }
 .hero__box__inner:nth-child(3n), .hero__box__inner:nth-child(4n){
     margin-bottom: 0;
@@ -350,7 +362,7 @@ section{
     height: 72px;
     width: 100%;
     background-color: #FFEC00;
-    transform: skew(20deg, 0);
+    transform: skew(20deg, 0) !important;
 }
 .company{
     padding-top: 40px;
@@ -468,6 +480,21 @@ section{
     padding-left: 13px;
     color: #fff;
 }
+@keyframes pulse {
+    from {
+      transform: scale(.50);
+    }
+    50% {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(.50);
+    }
+}
+.header__box__items__logo{
+    transform: scale(.50);
+    animation: pulse 1s ease-in-out infinite;
+}
 .insta__box__link{
     display: flex;
     justify-content: center;
@@ -484,6 +511,8 @@ section{
     border-radius: 100px;
     margin-left: 50px;
     transition: 0.3s all;
+    transform: scale(.50);
+    animation: pulse 2s ease-in-out infinite;
 }
 .insta__box__link:hover{
     background-color: #fff;

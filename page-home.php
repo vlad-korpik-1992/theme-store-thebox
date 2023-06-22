@@ -57,33 +57,33 @@
     <section class="info">
         <div class="wrapper">
             <div class="info__box">
-                <div class="info__box__items">
+                <div class="info__box__items" data-aos="fade-up" data-aos-duration="800">
                     <?php echo wpautop(the_content());?>
                 </div>
-                <div class="info__box__items">
+                <div class="info__box__items" data-aos="fade-up" data-aos-duration="1200">
                     <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );?>" alt="<?php single_post_title(); ?>">
                 </div>
-                <div class="info__box__items">
+                <div class="info__box__items" data-aos="fade-up" data-aos-duration="1600">
                     <?php echo wpautop( the_field('info-box-right') );?>
                 </div>
             </div>
         </div>
         <div class="info__footer">
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="400"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="600"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="800"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1000"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1400"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1600"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1800"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2000"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2400"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2600"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2800"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="3000"></div>
         </div>
     </section>
     <section class="company">
@@ -91,17 +91,17 @@
             <h2><?php the_field('company-title')?></h2>
             <?php echo wpautop( the_field('company-content') );?>
             <div class="company__slider">
-                <div class="company__slider__items">
+                <div class="company__slider__items" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_01.jpg" alt="">
                 </div>
-                <div class="company__slider__items company__slider__items--column">
+                <div class="company__slider__items company__slider__items--column" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                     <img class="company__slider__img" src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_02.jpg" alt="">
                     <img class="company__slider__img" src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_03.jpg" alt="">
                 </div>
-                <div class="company__slider__items">
+                <div class="company__slider__items" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                     <img class="company__slider__img" src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_04.jpg" alt="">
                 </div>
-                <div class="company__slider__items company__slider__items--column">
+                <div class="company__slider__items company__slider__items--column" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
                     <img class="company__slider__img" src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_02.jpg" alt="">
                     <img class="company__slider__img" src="<?php bloginfo('template_url'); ?>/assets/img/company_slider_03.jpg" alt="">
                 </div>
@@ -126,17 +126,17 @@
                     </div>
                 </div>
                 <div class="insta__box__items insta__box__items--row">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_01.png" alt="@thebox.99">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_02.png" alt="instagram.com/thebox.99">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_03.png" alt="instagram">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_04.png" alt="thebox.99">
+                    <img data-aos="fade-up" data-aos-duration="1000" src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_01.png" alt="@thebox.99">
+                    <img data-aos="fade-up" data-aos-duration="1400" src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_02.png" alt="instagram.com/thebox.99">
+                    <img data-aos="fade-up" data-aos-duration="1800" src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_03.png" alt="instagram">
+                    <img data-aos="fade-up" data-aos-duration="3600" src="<?php bloginfo('template_url'); ?>/assets/img/insta_post_04.png" alt="thebox.99">
                 </div>
             </div>
         </div>
     </section>
     <section class="about">
         <div class="wrapper">
-            <div class="box">
+            <div class="box" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                 <div class="box__half">
                     <div class="about__inner">
                         <?php echo wpautop( the_field('about-left') );?>
@@ -150,18 +150,18 @@
             </div>
         </div>
         <div class="info__footer">
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
-            <div class="info__footer__items"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="400"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="600"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="800"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1000"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1400"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1600"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="1800"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2000"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2200"></div>
+            <div class="info__footer__items" data-aos="fade-up" data-aos-duration="2400"></div>
         </div>
     </section>
 <?php get_footer();?>
