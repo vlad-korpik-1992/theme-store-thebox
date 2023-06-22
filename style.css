@@ -725,7 +725,7 @@ section{
 .products__box__half__inner{
     display: flex;
     margin-left: -9px;
-    margin-right: -9px;
+    margin-right: 9px;
     padding-top: 35px;
     padding-bottom: 55px;
 }
@@ -1168,7 +1168,7 @@ p.about__inner__show:last-child{
 .card{
     margin-bottom: 0;
 }
-.card__box{
+.card__box, .card__row{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -2402,6 +2402,9 @@ tr.order-total span.woocommerce-Price-amount{
         max-height: 167px;
         object-fit: cover;
     }
+    .nutrition__box{
+        top: 25px;
+    }
     /* Cart */
     .woocommerce table.shop_table_responsive tr, .woocommerce-page table.shop_table_responsive tr{
         display: block;
@@ -2437,6 +2440,14 @@ tr.order-total span.woocommerce-Price-amount{
     .woocommerce a.button.alt{
         width: 100%;
         max-width: 100%;
+    }
+    .woocommerce table.shop_table_responsive tr.woocommerce-cart-form__cart-item.cart_item td.product-quantity{
+        display: flex;
+        justify-content: space-between;
+    }
+    .woocommerce table.shop_table_responsive tr.woocommerce-cart-form__cart-item.cart_item td.product-quantity .quantity > input[type="number"]{
+        width: auto !important;
+        max-width: 150px;
     }
     /* Cart */
     /* Checkout */
@@ -2561,6 +2572,12 @@ tr.order-total span.woocommerce-Price-amount{
     }
     .single__box__sidebar__items img{
         max-height: 100%;
+    }
+    .products__box__half__inner{
+        margin-right: 0;
+    }
+    .products__box__half__imglink{
+        padding-right: 0;   
     }
 }
 @media (max-width: 424px){

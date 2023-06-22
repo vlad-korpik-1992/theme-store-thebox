@@ -14,7 +14,7 @@ $product_category = wc_get_product_category_list(get_the_ID());
 ?>
 <section class="card">
     <div class="wrapper">
-        <div class="card__box">
+        <div class="card__row">
             <div class="card__box__items">
                 <img class="card__picture <?php if (strpos($product_category, 'Пицца') || strpos($product_category, 'Напитки')) : echo 'card__picture--pizza';
                                             else : echo 'card__picture--product';
