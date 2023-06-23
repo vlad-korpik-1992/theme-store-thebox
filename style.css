@@ -101,6 +101,10 @@ section{
     padding: 15px 8px;
     background-color: #FFEC00;
 }
+.logo img{
+    transform: scale(.50);
+    animation: pulse 1s ease-in-out infinite;
+}
 .header__box{
     display: flex;
     justify-content: space-between;

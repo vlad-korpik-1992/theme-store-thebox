@@ -30,7 +30,7 @@
                         $preview = get_field('single_preview', $posts['ID']);
                         $short_preview = wp_trim_words( $preview, 18, '...' );
                 ?>
-                        <div class="blog__box__items">
+                        <div class="blog__box__items" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                             <div class="blog__box__items__inner">
                                 <a class="blog__items__link-img" href="<?php echo get_permalink($posts['ID']); ?>">
                                     <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id( $posts['ID'] ) ); ?>" alt="<?php the_title()?>">

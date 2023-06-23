@@ -17,24 +17,24 @@
     <section class="delivery">
         <div class="wrapper">
             <div class="delivery__box">
-                <div class="delivery__box__items">
+                <div class="delivery__box__items" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                     <?php echo wpautop(the_content());?>
                 </div>
                 <div class="delivery__box__items">
                     <ul class="delivery__list">
-                        <li class="delivery__list__items delivery__list__items--grren">
+                        <li class="delivery__list__items delivery__list__items--grren" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                             <h3>Зеленая зона: <br/> Сумма минимального заказа - 15 рублей</h3>
                             <p>Время доставки от 45 мин до 65 мин в зависимости от загруженности (прием заказов с 11:00 до 22:50)</p>
                         </li>
-                        <li class="delivery__list__items delivery__list__items--yellow">
+                        <li class="delivery__list__items delivery__list__items--yellow" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
                             <h3>Желтая зона: <br/> Сумма минимального заказа - 20 рублей</h3>
                             <p>Время доставки от 45 мин до 75 мин в зависимости от загруженности (прием заказов с 11:00 до 22:50)</p>
                         </li>
-                        <li class="delivery__list__items delivery__list__items--red">
+                        <li class="delivery__list__items delivery__list__items--red" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="2000">
                             <h3>Красная зона: <br/> Заказ от 35 рублей + платная доставка (4 рубля)</h3>
                             <p>Время доставки от 60 мин до 85 мин в зависимости от загруженности (прием заказов с 11:00 до 22:30)</p>
                         </li>
-                        <li class="delivery__list__items delivery__list__items--blue">
+                        <li class="delivery__list__items delivery__list__items--blue" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="2500">
                             <h3>Синяя зона: <br/> Заказ от 40 рублей + платная доставка (4 рубля)</h3>
                             <p>Время доставки от 45 мин до 75 мин в зависимости от загруженности (прием заказов с 11:00 до 22:50)</p>
                         </li>

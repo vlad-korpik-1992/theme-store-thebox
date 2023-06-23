@@ -19,7 +19,7 @@
             while( have_rows('stocks') ) : the_row();?>
                 <div class="stocks__box">
                     <div class="wrapper">
-                        <div class="stocks__box__inner <? if($item == 2):?>stocks__box__inner--revers<?endif; ?>">
+                        <div class="stocks__box__inner <? if($item == 2):?>stocks__box__inner--revers<?endif; ?>" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
                             <div class="stocks__box__inner__column">
                                 <img class="stocks__img" src="<?the_sub_field('stocks_img')?>" alt="">
                             </div>
