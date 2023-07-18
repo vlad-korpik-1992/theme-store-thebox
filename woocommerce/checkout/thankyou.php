@@ -35,11 +35,37 @@ defined('ABSPATH') || exit;
 				$orderForm = '<b>Заказ</b>:%0A';
 				foreach ( $order->get_items() as  $item_key => $item_values ) {
 					$item_data = $item_values->get_data();
-					$orderForm .= $item_data['name'].' - '.$item_data['quantity'].' шт.%0A---------------------%0A';
+					$product_id = $item_values->get_product_id();
+					$product_category = wc_get_product_category_list($product_id);
+					if(strpos($product_category, 'toppings-pizza-sauces')){
+						$orderForm .= '<b>Допы (соусы) :</b>' .$item_data['name']. ' - '.$item_data['quantity']. 'шт.';
+						$orderForm .= '%0A';
+						$orderForm .= '-------------';
+						$orderForm .= '%0A';
+					}
+					else if(strpos($product_category, 'toppings-pizza-stuffing')){
+						$orderForm .= '<b>Допы (начинка) :</b>' .$item_data['name']. ' - '.$item_data['quantity']. 'шт.';
+						$orderForm .= '%0A';
+						$orderForm .= '-------------';
+						$orderForm .= '%0A';
+					}
+					else if(strpos($product_category, 'sushi-dips-sauces')){
+						$orderForm .= '<b>Допы для суш :</b>' .$item_data['name']. ' - '.$item_data['quantity']. 'шт.';
+						$orderForm .= '%0A';
+						$orderForm .= '-------------';
+						$orderForm .= '%0A';
+					}
+					else{
+						$orderForm .= $item_data['name']. ' - '.$item_data['quantity'].' шт.';
+						$orderForm .= '%0A';
+						$orderForm .= '-------------';
+						$orderForm .= '%0A';
+					}
 				}
 				$token = '6020821705:AAEKbS9nWXGGx4XaTTKaS5-RnCYJp5JF7vg';
 				$chat_id = '-874354596';
 				$messageTelegram = "<b>Номер заказа:</b> ".$order_data["id"];
+				$messageTelegram .= "%0A<b>Статус заказа:</b> ".wc_get_order_status_name($order_data["status"]);
 				$messageTelegram .= "%0A<b>Сумма заказа:</b> ".$order_data["total"];
 				$messageTelegram .= " ".$order_data["currency"];
 				$messageTelegram .= "%0A<b>Имя:</b> ".$order_data["billing"]["first_name"];

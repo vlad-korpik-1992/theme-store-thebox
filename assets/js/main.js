@@ -201,18 +201,20 @@ $(function() {
 		let blockAmount = $(this).prev('.amount');
 		let amount = blockAmount.text();
 		let blockParent = $(this).parent().parent();
+		let blockLastCardItems = blockParent.parent().parent();
+		blockLastCardItems = blockLastCardItems.find('.card__sizes__link--active');
 		let blockPrice = blockParent.find('.add__price');
 		if(blockParent.hasClass('card__box__btn--modal')){
 			blockPrice = blockParent.find('.add__price__modal');
 		}
-		let price = $('.card__sizes__link--active').attr('data-price');
+		let price = blockLastCardItems.attr('data-price');
 		price = price.replace(/[\s,%]/g, '');
 		let newAmount = Number(amount) + 1;
 		let newPrice = price * newAmount;
 		newPrice = newPrice.toFixed(2);
 		blockAmount.text(newAmount);
 		blockPrice.text(newPrice);
-		let dataCart = $('.card__sizes__link--active').attr('data-cart');
+		let dataCart = blockLastCardItems.attr('data-cart');
 		let i = 1;
 		let newStirngHref = '';
 		while(i <= newAmount){
@@ -233,6 +235,8 @@ $(function() {
 		let blockAmount = $(this).next('.amount');
 		let amount = blockAmount.text();
 		let blockParent = $(this).parent().parent();
+		let blockLastCardItems = blockParent.parent().parent();
+		blockLastCardItems = blockLastCardItems.find('.card__sizes__link--active');
 		let blockPrice = blockParent.find('.add__price');
 		if(blockParent.hasClass('card__box__btn--modal')){
 			blockPrice = blockParent.find('.add__price__modal');
@@ -243,13 +247,13 @@ $(function() {
 				$('.supplements__checked__circle').removeClass('supplements__checked__circle--active');
 			}
 			let newAmount = Number(amount) - 1;
-			let price = $('.card__sizes__link--active').attr('data-price');
+			let price = blockLastCardItems.attr('data-price');
 			price = price.replace(/[\s,%]/g, '');
 			let newPrice = price * newAmount;
 			newPrice = newPrice.toFixed(2);
 			blockAmount.text(newAmount);
 			blockPrice.text(newPrice);
-			let dataCart = $('.card__sizes__link--active').attr('data-cart');
+			let dataCart = blockLastCardItems.attr('data-cart');
 			let i = 1;
 			let newStirngHref = '';
 			while(i <= newAmount){

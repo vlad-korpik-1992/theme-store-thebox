@@ -189,7 +189,7 @@ $product_category = wc_get_product_category_list(get_the_ID());
                                         $product_data = wc_get_product( get_the_ID() );
                                         $variations = $product_data->get_available_variations();
                                     ?>
-                                       <div class="card__supplements__box__items card__supplements__box__items--variation" <?php foreach ($variations as $variationProduct): echo 'data-id'.$item.'="'.$variationProduct['variation_id'].'"'; $item++; endforeach;?> data-cart="<? echo get_the_ID(); ?>">
+                                       <div class="card__supplements__box__items card__supplements__box__items--variation" <?php foreach ($variations as $variationProduct): if($item == 1): $variationProductIdOne = $variationProduct['variation_id']; endif; echo 'data-id'.$item.'="'.$variationProduct['variation_id'].'"'; $item++; endforeach;?> data-cart="<? echo $variationProductIdOne; ?>">
                                             <div class="supplements__checked">
                                                 <div class="supplements__checked__circle"></div>
                                                 <div class="supplements__checked__title"><?php the_title(); ?></div>

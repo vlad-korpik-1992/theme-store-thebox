@@ -198,6 +198,12 @@ function thebox_scripts()
 		wp_enqueue_script('aos-script');
 	}
 
+	if ( is_checkout() ){
+		wp_register_script('mask-script', get_template_directory_uri() . '/assets/js/jquery.inputmask.min.js', array(), null, true);
+
+		wp_enqueue_script('mask-script');
+	}
+
 	/*wp_enqueue_script('thebox-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -421,7 +427,7 @@ function my_custom_checkout_field($checkout)
 
 	woocommerce_form_field('my_field_room', array(
 		'type'          => 'number',
-		'required'		=> false,
+		'required'		=> true,
 		'class'         => array('my-field-class form-row-wide my-field-class--room'),
 		'label'         => __('Квартира'),
 		'placeholder'   => __('0'),
@@ -468,6 +474,31 @@ function my_custom_checkout_field($checkout)
     echo '</div>';
 }
 
+/* Валидация кастомных полей checkout*/
+add_action( 'woocommerce_after_checkout_validation', 'truemisha_validate_field', 25, 2 );
+ 
+function truemisha_validate_field( $fields, $errors ){
+	
+	if ( empty( $_POST['my_field_street'] ) ) {
+		$errors->add( 'woocommerce_password_error', __( 'Укажите пожалуйста адрес доставки.' ) );
+	}
+
+	if ( empty( $_POST['my_field_room'] ) ) {
+		$errors->add( 'woocommerce_password_error', __( 'Укажите пожалуйста номер квартиры.' ) );
+	}
+
+	if ( empty( $_POST['shipping_method'] ) ) {
+		$errors->add( 'woocommerce_password_error', __( 'Укажите пожалуйста способ доставки.' ) );
+	}
+
+	if ( empty( $_POST['checkbox_method'] ) ) {
+		$errors->add( 'woocommerce_password_error', __( 'Необходимо Ваше согласие на обработку персональных данных.' ) );
+	}
+ 
+}
+
+/* Валидация кастомных полей checkout*/
+
 add_action( 'woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta' );
 
 function my_custom_checkout_field_update_order_meta( $order_id ) {
@@ -500,6 +531,8 @@ function my_custom_checkout_field_display_admin_order_meta($order){
 
 /* Добавление новых полей */
 
+/* Валидация полей checkout*/
+
 /* Редактирование существующих полей */
 add_filter('woocommerce_default_address_fields', 'override_default_address_checkout_fields', 20, 1);
 function override_default_address_checkout_fields($address_fields)
@@ -513,6 +546,15 @@ function override_billing_checkout_fields($fields)
 	$fields['billing']['billing_phone']['placeholder'] = '+375 00 111 111 1';
 	return $fields;
 }
+
+/* Разделение количества товара на несколько товаров в корзине  
+add_filter( 'woocommerce_add_cart_item_data', 'bbloomer_split_product_individual_cart_items', 10, 2 );
+function bbloomer_split_product_individual_cart_items( $cart_item_data, $product_id ){
+	$unique_cart_item_key = uniqid();
+	$cart_item_data['unique_key'] = $unique_cart_item_key;
+	return $cart_item_data;
+}
+Разделение количества товара на несколько товаров в корзине  */
 
 
 /* Добавление нескольких товаров в корзину по url */
