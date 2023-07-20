@@ -18,10 +18,30 @@
 
 defined('ABSPATH') || exit;
 ?>
-<div class="single__box">
+<section class="single__box">
 	<article class="policy__box article">
 		<h2>Ваш заказ принят. Благодарим вас.</h2>
 		<p>Старт дан. Наши поваряты уже бегут готовить Ваш заказ.</p>
+		<ul class="order_details">
+			<li class="order">
+				<?php esc_html_e( 'Order number:', 'woocommerce' ); ?>
+				<strong><?php echo esc_html( $order->get_order_number() ); ?></strong>
+			</li>
+			<li class="date">
+				<?php esc_html_e( 'Date:', 'woocommerce' ); ?>
+				<strong><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></strong>
+			</li>
+			<li class="total">
+				<?php esc_html_e( 'Total:', 'woocommerce' ); ?>
+				<strong><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></strong>
+			</li>
+			<?php if ( $order->get_payment_method_title() ) : ?>
+			<li class="method">
+				<?php esc_html_e( 'Payment method:', 'woocommerce' ); ?>
+				<strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
+			</li>
+			<?php endif; ?>
+		</ul>
 		<a class="card__box__btn__add error-404--btn" href="<?php echo site_url(); ?>">Вернуться домой</a>
 		<?php
 			global $wp;
@@ -82,4 +102,4 @@ defined('ABSPATH') || exit;
 			}
 		?>
 	</article>
-</div>
+</section>
